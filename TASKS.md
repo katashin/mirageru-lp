@@ -8,10 +8,10 @@
 
 | フェーズ | 内容 | ステータス |
 |----------|------|------------|
-| Phase 1 | 環境セットアップ | 未着手 |
-| Phase 2 | デザイン基盤の構築 | 未着手 |
-| Phase 3 | セクションコンポーネント実装 | 未着手 |
-| Phase 4 | アニメーション実装 | 未着手 |
+| Phase 1 | 環境セットアップ | ✅ 完了 |
+| Phase 2 | デザイン基盤の構築 | ✅ 完了 |
+| Phase 3 | セクションコンポーネント実装 | ✅ 完了 |
+| Phase 4 | アニメーション実装 | ✅ 完了（Phase3に組み込み済み） |
 | Phase 5 | QA・最終調整 | 未着手 |
 | Phase 6 | デプロイ | 未着手 |
 
@@ -20,41 +20,41 @@
 ## Phase 1: 環境セットアップ
 
 ### 1-1. 依存パッケージの追加
-- [ ] `framer-motion` のインストール
-- [ ] `shadcn/ui` の初期化（`npx shadcn@latest init`）
-- [ ] Google Fonts（Noto Sans JP / Inter）の設定
+- [✕] `framer-motion` のインストール
+- [✕] `shadcn/ui` の初期化（`npx shadcn@latest init`）
+- [✕] Google Fonts（Noto Sans JP / Inter）の設定
 
 ### 1-2. ディレクトリ構成の作成
-- [ ] `src/components/sections/` ディレクトリを作成
-- [ ] `src/components/ui/` ディレクトリを確認（shadcn/ui が自動生成）
-- [ ] `src/lib/constants.ts` ファイルを作成
-- [ ] `public/images/` ディレクトリを作成
+- [✕] `src/components/sections/` ディレクトリを作成
+- [✕] `src/components/ui/` ディレクトリを確認（shadcn/ui が自動生成）
+- [✕] `src/lib/constants.ts` ファイルを作成
+- [✕] `public/images/` ディレクトリを作成
 
 ### 1-3. 定数ファイルの整備（`src/lib/constants.ts`）
-- [ ] LINE URL（`https://lin.ee/q0dw60b`）を定数化
-- [ ] サービス名・代表者名などの固定文言を定数化
-- [ ] ナビゲーションリンク一覧を定数化
+- [✕] LINE URL（`https://lin.ee/q0dw60b`）を定数化
+- [✕] サービス名・代表者名などの固定文言を定数化
+- [✕] ナビゲーションリンク一覧を定数化
 
 ---
 
 ## Phase 2: デザイン基盤の構築
 
 ### 2-1. グローバルCSS・Tailwind設定
-- [ ] `tailwind.config.ts` にカスタムカラーを登録
+- [✕] `tailwind.config.ts` にカスタムカラーを登録
   - `primary: #0F172A`
   - `accent: #F59E0B`
   - `text-base: #F8FAFC`
   - `text-muted: #94A3B8`
   - `surface: #1E293B`
   - `border: #334155`
-- [ ] `globals.css` に基本スタイル（body背景色・フォント・行間）を設定
-- [ ] フォントファミリー（Noto Sans JP / Inter）を `layout.tsx` で読み込み
+- [✕] `globals.css` に基本スタイル（body背景色・フォント・行間）を設定
+- [✕] フォントファミリー（Noto Sans JP / Inter）を `layout.tsx` で読み込み
 
 ### 2-2. 共通コンポーネント
-- [ ] `CTAButton` コンポーネントの作成
+- [✕] `CTAButton` コンポーネントの作成
   - アンバーのグロウエフェクト（hover）
   - LINE URLへのリンク
-- [ ] `SectionWrapper` コンポーネントの作成（統一した余白・最大幅）
+- [✕] `SectionWrapper` コンポーネントの作成（統一した余白・最大幅）
 
 ---
 
@@ -64,59 +64,59 @@
 > モバイルファーストで実装し、Tailwindのレスポンシブクラスで調整。
 
 ### 3-1. Navbar
-- [ ] `Navbar.tsx` を作成
+- [✕] `Navbar.tsx` を作成
   - ロゴ表示（テキストまたは画像）
   - アンカーリンク（Pain / Why / Services / Profile / CTA）
   - CTAボタン（「無料相談はこちら」）
   - スクロール後に背景をダークに変化（`use client` で scroll イベント検知）
 
 ### 3-2. Hero
-- [ ] `Hero.tsx` を作成
+- [✕] `Hero.tsx` を作成
   - キャッチコピー：「リーダーが現場から解放され、利益が残る現場に生まれ変わる」
   - サブコピー全文
   - CTAボタン（LINEへ誘導）
   - 背景：ダークネイビー + 装飾的なグラデーション（控えめに）
 
 ### 3-3. Pain（4つの課題）
-- [ ] `Pain.tsx` を作成
+- [✕] `Pain.tsx` を作成
   - セクション見出し（日本語）
   - 4枚のカードグリッド（2×2、モバイルは1列）
   - 各カード：タイトル + 本文（CLAUDE.mdの内容をそのまま使用）
 
 ### 3-4. Why（3つの強み）
-- [ ] `Why.tsx` を作成
+- [✕] `Why.tsx` を作成
   - セクション見出し（日本語）
   - 番号付きリスト形式（01 / 02 / 03）
   - 各項目：見出し + 説明文
 
 ### 3-5. Services（3メニュー）
-- [ ] `Services.tsx` を作成
+- [✕] `Services.tsx` を作成
   - セクション見出し（日本語）
   - 3枚のカード（横並び、モバイルは縦並び）
   - 各カード：メニュー名 + 目的 + 目安期間
   - 料金は「お見積り」と明記
 
 ### 3-6. Profile
-- [ ] `Profile.tsx` を作成
+- [✕] `Profile.tsx` を作成
   - 写真（`/public/images/profile.jpg`、プレースホルダー対応）
   - 名前・肩書き
   - 経歴・資格
   - メッセージ：「利益は、正しい仕組みの先に付いてくるもの」
 
 ### 3-7. CTA（無料相談）
-- [ ] `CTASection.tsx` を作成
+- [✕] `CTASection.tsx` を作成
   - 見出し：「まず、50分間話しましょう」
   - 3ステップの説明（公式LINE友だち追加 → 送信 → アンケート回答）
   - CTAボタン（LINEへ誘導）
 
 ### 3-8. Footer
-- [ ] `Footer.tsx` を作成
+- [✕] `Footer.tsx` を作成
   - コピーライト表示
   - （任意）LINEリンク
 
 ### 3-9. ページ統合
-- [ ] `src/app/page.tsx` で全セクションを組み合わせて表示
-- [ ] 各セクションに `id` 属性を付与（Navbarのアンカーリンクと対応）
+- [✕] `src/app/page.tsx` で全セクションを組み合わせて表示
+- [✕] 各セクションに `id` 属性を付与（Navbarのアンカーリンクと対応）
 
 ---
 
@@ -125,15 +125,15 @@
 > Framer Motion を使用。誠実さを損なわない控えめなアニメーションに留める。
 
 ### 4-1. スクロールフェードイン
-- [ ] 共通の `fadeInUp` バリアントを定義（`initial: opacity 0, y: 20` → `animate: opacity 1, y: 0`）
-- [ ] `useInView` を使い、ビューポート内に入ったときに発火
-- [ ] Pain / Why / Services / Profile の各カード・アイテムに適用
+- [✕] 共通の `fadeInUp` バリアントを定義（`initial: opacity 0, y: 20` → `animate: opacity 1, y: 0`）
+- [✕] `useInView` を使い、ビューポート内に入ったときに発火
+- [✕] Pain / Why / Services / Profile の各カード・アイテムに適用
 
 ### 4-2. Navbar アニメーション
-- [ ] スクロール後の背景変化をスムーズにトランジション
+- [✕] スクロール後の背景変化をスムーズにトランジション
 
 ### 4-3. CTAボタン グロウエフェクト
-- [ ] hover時にアンバー（`#F59E0B`）のbox-shadowが光るアニメーション
+- [✕] hover時にアンバー（`#F59E0B`）のbox-shadowが光るアニメーション
 
 ---
 
@@ -145,17 +145,17 @@
 - [ ] デスクトップ（1280px）での表示確認
 
 ### 5-2. TypeScript・Lint
-- [ ] `any` 型が使われていないことを確認
-- [ ] `npm run lint` でエラーがないことを確認
-- [ ] `npm run build` でビルドが通ることを確認
+- [✕] `any` 型が使われていないことを確認
+- [✕] `npm run lint` でエラーがないことを確認
+- [✕] `npm run build` でビルドが通ることを確認
 
 ### 5-3. コンテンツ確認
-- [ ] 全コピー（CLAUDE.md記載の文章）が正確に反映されているか確認
-- [ ] LINE URLが正しく設定されているか確認（`https://lin.ee/q0dw60b`）
-- [ ] 価格の断定表示がないことを確認（「お見積り」統一）
+- [✕] 全コピー（CLAUDE.md記載の文章）が正確に反映されているか確認
+- [✕] LINE URLが正しく設定されているか確認（`https://lin.ee/q0dw60b`）
+- [✕] 価格の断定表示がないことを確認（「お見積り」統一）
 
 ### 5-4. パフォーマンス
-- [ ] 画像の `next/image` 最適化が適用されているか確認
+- [✕] 画像の `next/image` 最適化が適用されているか確認
 - [ ] Lighthouse スコア確認（パフォーマンス・アクセシビリティ）
 
 ---
