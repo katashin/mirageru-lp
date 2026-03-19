@@ -57,7 +57,7 @@ export function Profile() {
         <div className="shrink-0">
           <div className="relative h-52 w-40 overflow-hidden rounded-xl border border-[#E2E8F0] shadow-sm">
             <Image
-              src="/images/プロフィール画像.png"
+              src="/images/profile.png"
               alt={`${REPRESENTATIVE_NAME}のプロフィール写真`}
               fill
               className="object-cover object-top"
