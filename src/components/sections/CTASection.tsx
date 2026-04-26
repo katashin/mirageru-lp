@@ -26,7 +26,7 @@ export function CTASection() {
           まずは、無料相談から。
         </h2>
         <p className="mx-auto mb-12 max-w-lg text-sm leading-relaxed text-[#94A3B8] md:text-base">
-          あなたの現場の課題を、30分でヒアリングします。
+          あなたの現場の課題を、50分でヒアリングします。
           <br />
           「何から始めればいいか分からない」そんな状態でも大丈夫です。
         </p>
