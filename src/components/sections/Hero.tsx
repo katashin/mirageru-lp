@@ -12,20 +12,23 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 60% 50%, rgba(22,157,178,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 60% at 60% 50%, rgba(22,157,178,0.10) 0%, transparent 70%)",
         }}
       />
 
       <div className="relative mx-auto max-w-5xl w-full px-6 py-24 md:px-8">
         <div className="flex flex-col items-center text-center mx-auto max-w-3xl">
-          <motion.p
-            className="mb-5 text-sm font-bold uppercase tracking-widest text-[#169db2]"
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="mb-6 flex flex-col items-center gap-3"
           >
-            業務標準化・リーダー育成の伴走支援
-          </motion.p>
+            <p className="text-sm font-bold uppercase tracking-widest text-[#169db2]">
+              業務標準化・リーダー育成の伴走支援
+            </p>
+            <div className="h-px w-10 bg-[#169db2]" />
+          </motion.div>
 
           <motion.h1
             className="mb-4 text-3xl font-bold leading-tight text-[#0F172A] md:text-5xl"
