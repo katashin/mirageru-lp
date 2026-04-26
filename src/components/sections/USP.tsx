@@ -88,7 +88,7 @@ export function USP() {
 
         {/* × マーク */}
         <div className="flex items-center justify-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0F172A] text-2xl font-bold text-white shadow-md">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#EFF9FB] text-2xl font-bold text-[#169db2]">
             ×
           </div>
         </div>
