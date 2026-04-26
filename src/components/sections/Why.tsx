@@ -38,7 +38,7 @@ function WhyItem({
       <p className="mb-4 flex-1 text-sm leading-relaxed text-[#64748B] md:text-base">
         {body}
       </p>
-      <div className="rounded-lg bg-[#EFF9FB] px-4 py-3">
+      <div className="min-h-[5.5rem] rounded-lg bg-[#EFF9FB] px-4 py-3">
         <p className="text-sm font-bold text-[#169db2]">→ {bridge}</p>
       </div>
     </motion.div>
