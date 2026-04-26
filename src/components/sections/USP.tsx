@@ -48,7 +48,7 @@ export function USP() {
   const leadInView = useInView(leadRef, { once: true, margin: "-60px" });
 
   return (
-    <SectionWrapper id="usp" className="bg-white">
+    <SectionWrapper id="usp" className="bg-[#F8FAFC]">
       <motion.div
         ref={headingRef}
         className="mb-6 text-center"

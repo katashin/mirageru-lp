@@ -9,7 +9,7 @@ interface CTAButtonProps {
 }
 
 export function CTAButton({
-  label = "LINEで無料相談する（50分）",
+  label = "LINEで無料相談する",
   className = "",
 }: CTAButtonProps) {
   return (

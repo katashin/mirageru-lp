@@ -20,8 +20,11 @@ export function Pain() {
         animate={headingInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-xl font-bold text-[#0F172A] md:text-2xl">
-          こんなことに当てはまりませんか？
+        <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#169db2]">
+          よくあるお悩み
+        </p>
+        <h2 className="text-xl font-bold text-[#0F172A] md:text-3xl">
+          あなたの現場、こうなっていませんか？
         </h2>
       </motion.div>
 
@@ -41,8 +44,8 @@ export function Pain() {
               animate={listInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#169db2] text-white text-sm font-bold">
-                ✓
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FEE2E2] text-[#DC2626] text-xs font-bold">
+                ✕
               </span>
               <div>
                 <p className="font-bold text-[#0F172A]">{item.title}</p>
