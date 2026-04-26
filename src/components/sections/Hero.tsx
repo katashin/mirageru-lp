@@ -24,32 +24,40 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            組織標準化の伴走支援
+            業務標準化・リーダー育成の伴走支援
           </motion.p>
 
           <motion.h1
-            className="mb-8 text-3xl font-bold leading-tight text-[#0F172A] md:text-4xl"
+            className="mb-4 text-3xl font-bold leading-tight text-[#0F172A] md:text-5xl"
             style={{ letterSpacing: "-0.02em" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            リーダーが現場から解放され、
+            あなたの頭の中にある
+            <span className="text-[#169db2]">"やり方"</span>を、
             <br />
-            <span className="text-[#169db2]">利益が残る現場</span>に生まれ変わる
+            組織が動く仕組みに変える。
           </motion.h1>
 
           <motion.p
-            className="mb-10 text-lg leading-loose text-[#64748B] md:text-xl"
+            className="mb-3 text-base font-semibold text-[#0F172A] md:text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            リーダーが現場から解放され、利益が残る現場を構築。
+          </motion.p>
+
+          <motion.p
+            className="mb-10 text-base leading-loose text-[#64748B] md:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            「自分がいないと現場が回らない」という呪縛を解き、
+            「自分がいないと回らない」を卒業し、誰でも同じ品質で動ける組織へ。
             <br />
-            リーダー不在でも成長し続ける組織へ。
-            <br />
-            標準化プロジェクトの伴走支援から、後任育成までを完遂します。
+            業務標準化とリーダー育成の伴走支援で、あなたの現場を根本から変えます。
           </motion.p>
 
           <motion.div
