@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { LINE_URL, NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 export function Navbar() {
@@ -14,7 +14,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <motion.header
+    <m.header
       className="fixed top-0 left-0 right-0 z-50 bg-white"
       animate={{
         boxShadow: scrolled
@@ -44,7 +44,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <motion.a
+        <m.a
           href={LINE_URL}
           target="_blank"
           rel="noopener noreferrer"
@@ -53,8 +53,8 @@ export function Navbar() {
           whileTap={{ scale: 0.97 }}
         >
           無料相談
-        </motion.a>
+        </m.a>
       </div>
-    </motion.header>
+    </m.header>
   );
 }

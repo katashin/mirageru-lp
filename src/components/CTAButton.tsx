@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { LINE_URL } from "@/lib/constants";
 
 interface CTAButtonProps {
@@ -13,7 +13,7 @@ export function CTAButton({
   className = "",
 }: CTAButtonProps) {
   return (
-    <motion.a
+    <m.a
       href={LINE_URL}
       target="_blank"
       rel="noopener noreferrer"
@@ -24,6 +24,6 @@ export function CTAButton({
       whileTap={{ scale: 0.97 }}
     >
       {label}
-    </motion.a>
+    </m.a>
   );
 }

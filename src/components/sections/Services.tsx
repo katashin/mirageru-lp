@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { SERVICES } from "@/lib/constants";
@@ -26,7 +26,7 @@ function ServiceCard({
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className="relative flex h-full flex-col rounded-xl border-2 border-[#169db2] bg-white p-6 shadow-sm md:p-8"
       initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ function ServiceCard({
           </li>
         ))}
       </ul>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -73,7 +73,7 @@ export function Services() {
 
   return (
     <SectionWrapper id="services" className="bg-[#F8FAFC]">
-      <motion.div
+      <m.div
         ref={headingRef}
         className="mb-14 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -86,7 +86,7 @@ export function Services() {
         <h2 className="text-xl font-bold text-[#0F172A] md:text-3xl">
           3つのメニュー
         </h2>
-      </motion.div>
+      </m.div>
 
       <div className="grid gap-6 md:grid-cols-3 md:items-stretch">
         {SERVICES.map((service, i) => (

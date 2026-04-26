@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { USP as USP_DATA } from "@/lib/constants";
@@ -20,7 +20,7 @@ function Column({
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className="flex flex-col rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-sm md:p-8"
       initial={{ opacity: 0, y: 24 }}
@@ -37,7 +37,7 @@ function Column({
           </li>
         ))}
       </ul>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -49,7 +49,7 @@ export function USP() {
 
   return (
     <SectionWrapper id="usp" className="bg-[#F8FAFC]">
-      <motion.div
+      <m.div
         ref={headingRef}
         className="mb-6 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -62,9 +62,9 @@ export function USP() {
         <h2 className="text-xl font-bold text-[#0F172A] md:text-3xl">
           業務標準化 × リーダー育成の掛け合わせ
         </h2>
-      </motion.div>
+      </m.div>
 
-      <motion.p
+      <m.p
         ref={leadRef}
         className="mx-auto mb-12 max-w-2xl text-center text-sm leading-loose text-[#64748B] md:text-base"
         initial={{ opacity: 0, y: 16 }}
@@ -76,7 +76,7 @@ export function USP() {
         「人」だけ育てても、「仕組み」がなければ属人化は続く。
         <br className="hidden md:block" />
         この2つが掛け合わさることで、はじめて「自分がいなくても回る組織」になります。
-      </motion.p>
+      </m.p>
 
       <div className="grid items-stretch gap-6 md:grid-cols-[1fr_auto_1fr]">
         <Column

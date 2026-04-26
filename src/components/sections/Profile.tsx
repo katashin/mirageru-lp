@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { SectionWrapper } from "@/components/SectionWrapper";
@@ -15,7 +15,7 @@ export function Profile() {
   return (
     <SectionWrapper id="profile" className="bg-white">
       {/* メインメッセージ */}
-      <motion.div
+      <m.div
         ref={msgRef}
         className="mb-16 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -43,10 +43,10 @@ export function Profile() {
             私は単なるコンサルではありません。<strong className="text-[#0F172A]">実務を巻き取るPM（プロジェクトマネージャー）</strong>として、あなたの隣で共に現場を、そして未来を整えます。
           </p>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* プロフィール情報 */}
-      <motion.div
+      <m.div
         ref={ref}
         className="flex flex-col items-center gap-8 rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC] p-8 md:flex-row md:items-start md:gap-10 w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export function Profile() {
             エグゼクティブコーチング協会認定トレーナー・NLPマスタープラクティショナー
           </p>
         </div>
-      </motion.div>
+      </m.div>
     </SectionWrapper>
   );
 }

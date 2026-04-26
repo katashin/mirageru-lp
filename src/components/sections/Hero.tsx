@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { CTAButton } from "@/components/CTAButton";
 
 const TRUST_ITEMS = [
@@ -27,7 +27,7 @@ export function Hero() {
 
           {/* ── Left: テキスト ── */}
           <div className="flex flex-col md:flex-1">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -37,9 +37,9 @@ export function Hero() {
                 業務標準化・リーダー育成の伴走支援
               </p>
               <div className="h-px w-10 bg-[#169db2]" />
-            </motion.div>
+            </m.div>
 
-            <motion.h1
+            <m.h1
               className="mb-4 text-3xl font-bold leading-tight text-[#0F172A] md:text-4xl"
               style={{ letterSpacing: "-0.02em" }}
               initial={{ opacity: 0, y: 20 }}
@@ -50,18 +50,18 @@ export function Hero() {
               <span className="text-[#169db2]">"やり方"</span>を、
               <br />
               組織が動く仕組みに変える。
-            </motion.h1>
+            </m.h1>
 
-            <motion.p
+            <m.p
               className="mb-3 text-base font-semibold text-[#0F172A] md:text-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
             >
               リーダーが現場から解放され、利益が残る現場を構築。
-            </motion.p>
+            </m.p>
 
-            <motion.p
+            <m.p
               className="mb-10 text-sm leading-loose text-[#64748B] md:text-base"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -70,9 +70,9 @@ export function Hero() {
               「自分がいないと回らない」を卒業し、誰でも同じ品質で動ける組織へ。
               <br className="hidden md:block" />
               業務標準化とリーダー育成の伴走支援で、あなたの現場を根本から変えます。
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
@@ -81,11 +81,11 @@ export function Hero() {
               <p className="mt-3 text-xs text-[#64748B]">
                 ※ 無料・完全オンライン・LINE登録だけでOK
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* ── Right: ダークパネル ── */}
-          <motion.div
+          <m.div
             className="w-full md:w-[380px] md:shrink-0"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -125,7 +125,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </div>

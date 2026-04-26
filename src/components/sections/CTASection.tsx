@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { CTAButton } from "@/components/CTAButton";
@@ -12,7 +12,7 @@ export function CTASection() {
 
   return (
     <SectionWrapper id="cta" className="bg-[#0F172A]">
-      <motion.div
+      <m.div
         ref={ref}
         className="text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ export function CTASection() {
           メールで問い合わせる
         </a>
         <p className="mt-2 text-xs text-[#475569]">{EMAIL_ADDRESS}</p>
-      </motion.div>
+      </m.div>
     </SectionWrapper>
   );
 }

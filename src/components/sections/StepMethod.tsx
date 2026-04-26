@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { STEP_ITEMS } from "@/lib/constants";
@@ -16,7 +16,7 @@ export function StepMethod() {
 
   return (
     <SectionWrapper id="step-method" className="bg-[#F8FAFC]">
-      <motion.div
+      <m.div
         ref={headingRef}
         className="mb-12 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ export function StepMethod() {
         <p className="mt-4 text-sm text-[#64748B] md:text-base">
           クライアントのプロジェクトオーナーと二人三脚で進めます。
         </p>
-      </motion.div>
+      </m.div>
 
       {/* PC: CSS Grid 2行レイアウト — Row1=ステップヘッダー / Row2=成果物カード */}
       <div ref={gridRef} className="hidden md:block">
@@ -41,7 +41,7 @@ export function StepMethod() {
           {/* Row 1: ステップヘッダー（全ボックスが同じ高さに揃う） */}
           {STEP_ITEMS.map((item, i) => (
             <Fragment key={`step-${item.step}`}>
-              <motion.div
+              <m.div
                 className="flex flex-col items-center justify-center rounded-xl bg-[#169db2] px-3 py-5 text-center text-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={gridInView ? { opacity: 1, y: 0 } : {}}
@@ -52,7 +52,7 @@ export function StepMethod() {
                 </span>
                 <span className="text-sm font-bold leading-snug">{item.name}</span>
                 <span className="mt-1.5 text-[11px] opacity-70">{item.label}</span>
-              </motion.div>
+              </m.div>
               {i < STEP_ITEMS.length - 1 && (
                 <div className="flex items-center justify-center text-xl font-bold text-[#169db2]">
                   →
@@ -64,7 +64,7 @@ export function StepMethod() {
           {/* Row 2: 成果物カード（全カードが同じ高さに揃う） */}
           {STEP_ITEMS.map((item, i) => (
             <Fragment key={`deliv-${item.step}`}>
-              <motion.div
+              <m.div
                 className="rounded-xl border border-[#E2E8F0] bg-white p-4 text-center shadow-sm"
                 initial={{ opacity: 0, y: 12 }}
                 animate={gridInView ? { opacity: 1, y: 0 } : {}}
@@ -76,7 +76,7 @@ export function StepMethod() {
                 <p className="text-xs leading-relaxed text-[#374151]">
                   {item.deliverable}
                 </p>
-              </motion.div>
+              </m.div>
               {i < STEP_ITEMS.length - 1 && <div />}
             </Fragment>
           ))}
@@ -86,7 +86,7 @@ export function StepMethod() {
       {/* SP: 縦積みカード */}
       <div className="flex flex-col gap-4 md:hidden">
         {STEP_ITEMS.map((item, i) => (
-          <motion.div
+          <m.div
             key={item.step}
             className="rounded-xl border border-[#E2E8F0] bg-white p-5 shadow-sm"
             initial={{ opacity: 0, x: -16 }}
@@ -106,12 +106,12 @@ export function StepMethod() {
               <p className="text-xs font-bold uppercase tracking-widest text-[#94A3B8]">成果物</p>
               <p className="mt-1 text-xs leading-relaxed text-[#374151]">{item.deliverable}</p>
             </div>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
       {/* 補足バナー */}
-      <motion.div
+      <m.div
         ref={footerRef}
         className="mt-10 rounded-2xl bg-[#0F172A] px-8 py-6 text-center"
         initial={{ opacity: 0, y: 16 }}
@@ -125,7 +125,7 @@ export function StepMethod() {
         <p className="mt-1 text-xs text-[#94A3B8]">
           支援終了後も、社内で活用し続けられます。
         </p>
-      </motion.div>
+      </m.div>
     </SectionWrapper>
   );
 }

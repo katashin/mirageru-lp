@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { PAIN_ITEMS } from "@/lib/constants";
@@ -13,7 +13,7 @@ export function Pain() {
 
   return (
     <SectionWrapper id="pain" className="bg-[#F8FAFC]">
-      <motion.div
+      <m.div
         ref={headingRef}
         className="mb-10 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -26,9 +26,9 @@ export function Pain() {
         <h2 className="text-xl font-bold text-[#0F172A] md:text-3xl">
           あなたの現場、こうなっていませんか？
         </h2>
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         ref={listRef}
         className="mx-auto max-w-2xl rounded-2xl border border-[#E2E8F0] bg-white p-8 shadow-sm md:p-10"
         initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export function Pain() {
       >
         <ul className="flex flex-col gap-5">
           {PAIN_ITEMS.map((item, i) => (
-            <motion.li
+            <m.li
               key={item.title}
               className="flex items-start gap-4"
               initial={{ opacity: 0, x: -16 }}
@@ -53,11 +53,11 @@ export function Pain() {
                   {item.body}
                 </p>
               </div>
-            </motion.li>
+            </m.li>
           ))}
         </ul>
 
-        <motion.p
+        <m.p
           className="mt-8 text-center text-base font-bold text-[#0F172A]"
           initial={{ opacity: 0 }}
           animate={listInView ? { opacity: 1 } : {}}
@@ -65,8 +65,8 @@ export function Pain() {
         >
           その悩み、すべて{" "}
           <span className="text-[#169db2]">MiraGeru</span> が解決します。
-        </motion.p>
-      </motion.div>
+        </m.p>
+      </m.div>
     </SectionWrapper>
   );
 }

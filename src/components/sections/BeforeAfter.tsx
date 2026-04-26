@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { BEFORE_AFTER } from "@/lib/constants";
@@ -15,7 +15,7 @@ export function BeforeAfter() {
 
   return (
     <SectionWrapper id="before-after" className="bg-white">
-      <motion.div
+      <m.div
         ref={headingRef}
         className="mb-12 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -28,10 +28,10 @@ export function BeforeAfter() {
         <h2 className="text-xl font-bold text-[#0F172A] md:text-3xl">
           仕組みが整うと、現場は必ず変わる
         </h2>
-      </motion.div>
+      </m.div>
 
       {/* Before / After グリッド */}
-      <motion.div
+      <m.div
         ref={gridRef}
         className="grid gap-6 md:grid-cols-[1fr_auto_1fr]"
         initial={{ opacity: 0, y: 20 }}
@@ -78,10 +78,10 @@ export function BeforeAfter() {
             ))}
           </ul>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* キャッチフレーズ */}
-      <motion.div
+      <m.div
         ref={catchRef}
         className="mt-10 rounded-2xl bg-[#0F172A] px-8 py-6 text-center"
         initial={{ opacity: 0, y: 16 }}
@@ -91,7 +91,7 @@ export function BeforeAfter() {
         <p className="text-lg font-bold text-white md:text-xl">
           {BEFORE_AFTER.catchPhrase}
         </p>
-      </motion.div>
+      </m.div>
     </SectionWrapper>
   );
 }
