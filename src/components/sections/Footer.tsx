@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { LINE_URL, SITE_NAME } from "@/lib/constants";
 
 export function Footer() {
@@ -6,7 +7,13 @@ export function Footer() {
   return (
     <footer className="border-t border-[#E2E8F0] bg-white py-8">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 md:flex-row md:px-8">
-        <span className="text-sm font-bold text-[#0F172A]">{SITE_NAME}</span>
+        <Image
+          src="/images/logo-light.png"
+          alt={SITE_NAME}
+          width={96}
+          height={62}
+          className="h-8 w-auto"
+        />
         <a
           href={LINE_URL}
           target="_blank"

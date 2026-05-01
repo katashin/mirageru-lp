@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { m } from "framer-motion";
+import Image from "next/image";
 import { LINE_URL, NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 export function Navbar() {
@@ -24,12 +25,15 @@ export function Navbar() {
       transition={{ duration: 0.3 }}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 md:px-8">
-        <a
-          href="#"
-          className="text-xl font-bold tracking-tight text-[#0F172A]"
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          {SITE_NAME}
+        <a href="#" aria-label={SITE_NAME}>
+          <Image
+            src="/images/logo-light.png"
+            alt={SITE_NAME}
+            width={120}
+            height={78}
+            className="h-10 w-auto"
+            priority
+          />
         </a>
 
         <nav className="hidden items-center gap-6 md:flex">
