@@ -57,7 +57,7 @@ export function USP() {
         transition={{ duration: 0.6 }}
       >
         <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#169db2]">
-          MiraGeru が提供できること
+          ミラゲル が提供できること
         </p>
         <h2 className="text-xl font-bold text-[#0F172A] md:text-3xl">
           業務標準化 × リーダー育成の掛け合わせ

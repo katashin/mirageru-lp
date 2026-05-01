@@ -94,7 +94,7 @@ export function Hero() {
           >
             <div className="rounded-2xl bg-[#0F172A] p-7 shadow-xl">
               <p className="mb-5 text-[11px] font-bold uppercase tracking-widest text-[#169db2]">
-                なぜ MiraGeru か
+                なぜ ミラゲル か
               </p>
 
               <div className="mb-7 space-y-4">

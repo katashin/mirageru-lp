@@ -74,7 +74,7 @@ export function Profile() {
         {/* テキスト */}
         <div className="flex-1 text-center md:text-left">
           <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-[#169db2]">
-            MiraGeru 代表
+            ミラゲル 代表
           </p>
           <h3 className="mb-4 text-2xl font-bold text-[#0F172A]">
             {REPRESENTATIVE_NAME}

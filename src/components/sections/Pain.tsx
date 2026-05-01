@@ -64,7 +64,7 @@ export function Pain() {
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           その悩み、すべて{" "}
-          <span className="text-[#169db2]">MiraGeru</span> が解決します。
+          <span className="text-[#169db2]">ミラゲル</span> が解決します。
         </m.p>
       </m.div>
     </SectionWrapper>

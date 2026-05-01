@@ -1,7 +1,7 @@
 export const LINE_URL = "https://lin.ee/q0dw60b";
 export const EMAIL_ADDRESS = "shinsuke.katayama@mirageru.com";
 
-export const SITE_NAME = "MiraGeru";
+export const SITE_NAME = "ミラゲル";
 export const REPRESENTATIVE_NAME = "片山 真介";
 
 export const NAV_LINKS = [
