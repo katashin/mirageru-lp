@@ -7,7 +7,6 @@ import Image from "next/image";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { STEP_ITEMS } from "@/lib/constants";
 
-const SHIKUMIRU_STEPS = new Set([1, 3, 4]);
 
 export function StepMethod() {
   const headingRef = useRef(null);
@@ -57,11 +56,6 @@ export function StepMethod() {
                 </span>
                 <span className="text-sm font-bold leading-snug">{item.name}</span>
                 <span className="mt-1.5 text-[11px] opacity-70">{item.label}</span>
-                {SHIKUMIRU_STEPS.has(item.step) && (
-                  <span className="mt-2 rounded-full bg-white/20 px-2 py-0.5 text-[9px] font-bold tracking-wide text-white">
-                    シクミル対応
-                  </span>
-                )}
               </m.div>
               {i < STEP_ITEMS.length - 1 && (
                 <div className="flex items-center justify-center text-xl font-bold text-[#169db2]">
@@ -108,14 +102,7 @@ export function StepMethod() {
                 {item.step}
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <p className="font-bold text-[#0F172A]">{item.name}</p>
-                  {SHIKUMIRU_STEPS.has(item.step) && (
-                    <span className="rounded-full bg-[#169db2]/10 px-2 py-0.5 text-[9px] font-bold text-[#169db2]">
-                      シクミル
-                    </span>
-                  )}
-                </div>
+                <p className="font-bold text-[#0F172A]">{item.name}</p>
                 <p className="text-xs text-[#64748B]">{item.label}</p>
               </div>
             </div>
