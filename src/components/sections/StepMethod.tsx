@@ -3,14 +3,19 @@
 import { Fragment } from "react";
 import { m, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { STEP_ITEMS } from "@/lib/constants";
+
+const SHIKUMIRU_STEPS = new Set([1, 3, 4]);
 
 export function StepMethod() {
   const headingRef = useRef(null);
   const headingInView = useInView(headingRef, { once: true, margin: "-60px" });
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: "-60px" });
+  const shikumiruRef = useRef(null);
+  const shikumiruInView = useInView(shikumiruRef, { once: true, margin: "-60px" });
   const footerRef = useRef(null);
   const footerInView = useInView(footerRef, { once: true, margin: "-60px" });
 
@@ -52,6 +57,11 @@ export function StepMethod() {
                 </span>
                 <span className="text-sm font-bold leading-snug">{item.name}</span>
                 <span className="mt-1.5 text-[11px] opacity-70">{item.label}</span>
+                {SHIKUMIRU_STEPS.has(item.step) && (
+                  <span className="mt-2 rounded-full bg-white/20 px-2 py-0.5 text-[9px] font-bold tracking-wide text-white">
+                    シクミル対応
+                  </span>
+                )}
               </m.div>
               {i < STEP_ITEMS.length - 1 && (
                 <div className="flex items-center justify-center text-xl font-bold text-[#169db2]">
@@ -98,7 +108,14 @@ export function StepMethod() {
                 {item.step}
               </div>
               <div>
-                <p className="font-bold text-[#0F172A]">{item.name}</p>
+                <div className="flex items-center gap-2">
+                  <p className="font-bold text-[#0F172A]">{item.name}</p>
+                  {SHIKUMIRU_STEPS.has(item.step) && (
+                    <span className="rounded-full bg-[#169db2]/10 px-2 py-0.5 text-[9px] font-bold text-[#169db2]">
+                      シクミル
+                    </span>
+                  )}
+                </div>
                 <p className="text-xs text-[#64748B]">{item.label}</p>
               </div>
             </div>
@@ -109,6 +126,40 @@ export function StepMethod() {
           </m.div>
         ))}
       </div>
+
+      {/* シクミル紹介パネル */}
+      <m.div
+        ref={shikumiruRef}
+        className="mt-8 overflow-hidden rounded-2xl border border-[#169db2]/20 bg-[#F0FAFB]"
+        initial={{ opacity: 0, y: 16 }}
+        animate={shikumiruInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="flex flex-col md:flex-row">
+          {/* テキスト */}
+          <div className="flex flex-1 flex-col justify-center p-6 md:p-8">
+            <span className="mb-3 inline-block self-start rounded-full bg-[#169db2] px-3 py-1 text-xs font-bold text-white">
+              独自ツール
+            </span>
+            <h3 className="mb-3 text-base font-bold text-[#0F172A] md:text-lg">
+              シクミル — 業務フロー・マニュアル・稼働計画が、ひとつにつながる
+            </h3>
+            <p className="text-sm leading-relaxed text-[#64748B]">
+              各ステップで作った成果物がバラバラのままでは、改善のサイクルは止まります。シクミルは3つのデータを横串でつなぐことで、「作成→標準化→実行→改善」の流れを一元管理。支援終了後も、クライアント自身が使い続けられる仕組みです。
+            </p>
+          </div>
+          {/* スクリーンショット */}
+          <div className="relative shrink-0 md:w-[480px]">
+            <Image
+              src="/images/shikumiru-preview.png"
+              alt="シクミル — 稼働計画・作業一覧ビュー"
+              width={960}
+              height={640}
+              className="h-full w-full object-cover object-left-top"
+            />
+          </div>
+        </div>
+      </m.div>
 
       {/* 補足バナー */}
       <m.div
