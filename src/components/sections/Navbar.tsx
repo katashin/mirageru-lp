@@ -25,15 +25,16 @@ export function Navbar() {
       transition={{ duration: 0.3 }}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 md:px-8">
-        <a href="#" aria-label={SITE_NAME}>
+        <a href="#" aria-label={SITE_NAME} className="flex items-center gap-2">
           <Image
-            src="/images/logo-light.png"
+            src="/icon.png"
             alt={SITE_NAME}
-            width={120}
-            height={78}
-            className="h-10 w-auto"
+            width={36}
+            height={36}
+            className="h-9 w-9"
             priority
           />
+          <span className="text-base font-bold text-[#0F172A]">ミラゲル</span>
         </a>
 
         <nav className="hidden items-center gap-6 md:flex">

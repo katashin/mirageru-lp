@@ -20,11 +20,11 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "MiraGeru — 属人化をゼロに、利益が残る組織へ",
+  title: "ミラゲル — 属人化をゼロに、利益が残る組織へ",
   description:
     "「自分がいないと現場が回らない」という呪縛を解き、リーダー不在でも成長し続ける組織へ。標準化プロジェクトの伴走支援から、後任育成までを完遂します。",
   openGraph: {
-    title: "MiraGeru — 属人化をゼロに、利益が残る組織へ",
+    title: "ミラゲル — 属人化をゼロに、利益が残る組織へ",
     description:
       "業務標準化とリーダー育成の伴走支援で、自分がいなくても回る組織へ。",
     locale: "ja_JP",
