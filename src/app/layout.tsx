@@ -32,6 +32,33 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://mirageru-lp.mirageru.com/#person",
+      name: "片山 真介",
+      jobTitle: "業務標準化・リーダー育成 伴走支援コンサルタント",
+      description:
+        "ニトリで培った業務標準化スキルとコーチングで、店舗ビジネス・スモールビジネスの自走組織化を支援。",
+      url: "https://mirageru-lp.mirageru.com",
+      sameAs: ["https://twitter.com/mirageru"],
+    },
+    {
+      "@type": "Service",
+      "@id": "https://mirageru-lp.mirageru.com/#service",
+      name: "業務標準化・リーダー育成 伴走支援",
+      provider: { "@id": "https://mirageru-lp.mirageru.com/#person" },
+      description:
+        "店舗ビジネス・個人事業主・スモールビジネスオーナーの業務標準化とリーダー育成を伴走支援。マニュアル作成から後任育成まで完遂。",
+      areaServed: "JP",
+      serviceType: "BusinessConsulting",
+      url: "https://mirageru-lp.mirageru.com",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,6 +83,10 @@ export default function RootLayout({
             gtag('config', '${GA_ID}');
           `}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
