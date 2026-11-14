@@ -1,14 +1,8 @@
-// src/app/sitemap.ts
 import { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { getAllNotes } from "@/lib/note";
+import { buildSitemap } from "@/lib/sitemap";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: SITE_URL,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  // サイトマップには Preview でも下書きを載せない
+  return buildSitemap(getAllNotes({ includeDrafts: false }));
 }

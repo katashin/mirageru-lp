@@ -53,3 +53,24 @@ describe("記事の構造化データ", () => {
     ]);
   });
 });
+
+import { buildSitemap } from "@/lib/sitemap";
+import { getAllNotes } from "@/lib/note";
+
+describe("サイトマップと記事", () => {
+  it("記事が無いときは、トップと /note の2件", () => {
+    expect(sitemap().map((e) => e.url)).toEqual([SITE_URL, `${SITE_URL}/note`]);
+  });
+
+  it("公開の記事だけを載せ、更新日を lastModified にする", () => {
+    const notes = getAllNotes({ dir: path.join(__dirname, "fixtures/note"), includeDrafts: false });
+    const entries = buildSitemap(notes);
+    expect(entries.map((e) => e.url)).toEqual([
+      SITE_URL,
+      `${SITE_URL}/note`,
+      `${SITE_URL}/note/manual-koushin`,
+      `${SITE_URL}/note/shinjin-shonichi`,
+    ]);
+    expect(entries[3].lastModified).toBe("2026-11-20");
+  });
+});

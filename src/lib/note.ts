@@ -8,7 +8,7 @@ export * from "./noteTypes";
 
 type Opts = { dir?: string; includeDrafts?: boolean };
 
-const DEFAULT_DIR = path.join(process.cwd(), "content/note");
+const DEFAULT_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), "content", "note");
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const REQUIRED = ["no", "title", "theme", "date"] as const;
 
