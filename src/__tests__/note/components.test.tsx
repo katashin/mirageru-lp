@@ -120,3 +120,15 @@ describe("目次と見出しの id（点検の指摘）", () => {
     expect([...container.querySelectorAll("h2")].map((h) => h.id)).toEqual(["s1", "s2", "s3"]);
   });
 });
+
+import { NoteCardRow } from "@/components/note/NoteCard";
+
+describe("小さなカードのサムネイル（オーナーの依頼）", () => {
+  it("サムネイルの中に通し番号とテーマを出す", () => {
+    const { container } = render(<NoteCardRow note={full} />);
+    const thumb = container.querySelector('[data-testid="note-thumb"]') as HTMLElement;
+    expect(thumb).toHaveTextContent("No.01");
+    expect(thumb).toHaveTextContent("スタッフ育成");
+    expect(thumb.querySelector("svg")).not.toBeNull();
+  });
+});
