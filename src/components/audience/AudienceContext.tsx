@@ -12,7 +12,7 @@ const CHANGE_EVENT = "audiencechange";
 
 type AudienceValue = {
   audience: Audience;
-  select: (audience: Audience, opts?: { scroll?: boolean }) => void;
+  select: (audience: Audience) => void;
 };
 
 // provider が無いページ（現場ノートなど）では、いつも会社向け
@@ -34,13 +34,10 @@ const getServerSnapshot = (): Audience => "business";
 export function AudienceProvider({ children }: { children: React.ReactNode }) {
   const audience = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  const select = useCallback((next: Audience, opts?: { scroll?: boolean }) => {
+  const select = useCallback((next: Audience) => {
     const url = window.location.pathname + window.location.search + (next === "katariai" ? KATARIAI_HASH : "");
     window.history.replaceState(null, "", url);
     window.dispatchEvent(new Event(CHANGE_EVENT));
-    if (opts?.scroll) {
-      document.getElementById(AUDIENCE_TABS_ID)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
   }, []);
 
   return <AudienceCtx.Provider value={{ audience, select }}>{children}</AudienceCtx.Provider>;

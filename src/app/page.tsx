@@ -5,7 +5,6 @@ import { NoteShowcase } from "@/components/sections/NoteShowcase";
 import { StickyLineBar } from "@/components/StickyLineBar";
 import { getAllNotes, showDrafts } from "@/lib/note";
 import { AudienceProvider } from "@/components/audience/AudienceContext";
-import { AudienceGate } from "@/components/sections/AudienceGate";
 import { AudienceTabs } from "@/components/sections/AudienceTabs";
 import { Katariai } from "@/components/sections/katariai/Katariai";
 
@@ -26,8 +25,7 @@ export default function Home() {
     <AudienceProvider>
       <Navbar />
       <main>
-        {/* 最初の画面：会社向け・個人向けの2つの入口。その下のタブで中身を切り替える */}
-        <AudienceGate />
+        {/* ページの一番上のタブで、会社向け・個人向け（カタリアイ）の中身を切り替える */}
         <AudienceTabs
           business={
             <>
