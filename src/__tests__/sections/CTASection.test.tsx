@@ -26,3 +26,36 @@ describe("CTASection", () => {
     });
   });
 });
+
+import { fireEvent, act } from "@testing-library/react";
+import { EMAIL_ADDRESS } from "@/lib/constants";
+
+describe("メールアドレスのコピー", () => {
+  const orig = navigator.clipboard;
+  afterEach(() => {
+    Object.defineProperty(navigator, "clipboard", { value: orig, configurable: true });
+  });
+
+  it("「アドレスをコピー」を押すとアドレスがコピーされ、コピーしましたと出る", async () => {
+    const writeText = jest.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+    render(<CTASection />);
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: "アドレスをコピー" }));
+    });
+    expect(writeText).toHaveBeenCalledWith(EMAIL_ADDRESS);
+    expect(screen.getByRole("button", { name: "コピーしました" })).toBeInTheDocument();
+  });
+
+  it("コピーができない環境でも止まらず、アドレスを選んだ状態にする", async () => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: jest.fn().mockRejectedValue(new Error("denied")) },
+      configurable: true,
+    });
+    render(<CTASection />);
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: "アドレスをコピー" }));
+    });
+    expect(window.getSelection()?.toString()).toBe(EMAIL_ADDRESS);
+  });
+});

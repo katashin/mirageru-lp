@@ -4,6 +4,7 @@ import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { CTAButton } from "@/components/CTAButton";
+import { CopyEmail } from "@/components/CopyEmail";
 import { CTA_STEPS, EMAIL_ADDRESS } from "@/lib/constants";
 
 export function CTASection() {
@@ -71,7 +72,7 @@ export function CTASection() {
         >
           メールで問い合わせる
         </a>
-        <p className="mt-2 text-xs text-[#475569]">{EMAIL_ADDRESS}</p>
+        <CopyEmail email={EMAIL_ADDRESS} />
       </m.div>
     </SectionWrapper>
   );
