@@ -7,6 +7,7 @@ export function NoteHeader({ note }: { note: Note }) {
       <div className="mx-auto flex max-w-3xl flex-col gap-3 px-5 pb-10 pt-28 md:px-8">
         <p className="font-mono text-xs tracking-wide text-[#6fd6e6]">
           現場ノート {noLabel(note.no)} ・ {note.theme}
+          {note.draft && <span className="ml-2 rounded bg-[#f59e0b] px-1.5 py-0.5 text-[10px] font-bold text-[#0F172A]">下書き</span>}
         </p>
         <h1 className="text-2xl font-black leading-snug md:text-4xl" style={{ textWrap: "balance" }}>
           {note.title}

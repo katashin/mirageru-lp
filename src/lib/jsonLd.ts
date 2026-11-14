@@ -1,3 +1,4 @@
+import type { Note } from "@/lib/note";
 import { SITE_URL, X_URL } from "@/lib/constants";
 
 export const jsonLd = {
@@ -26,3 +27,35 @@ export const jsonLd = {
     },
   ],
 };
+
+export function articleJsonLd(note: Note) {
+  const url = `${SITE_URL}/note/${note.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: note.title,
+    description: note.description,
+    datePublished: note.date,
+    dateModified: note.updated ?? note.date,
+    url,
+    mainEntityOfPage: url,
+    image: `${url}/opengraph-image`,
+    keywords: note.keyword,
+    articleSection: note.theme,
+    inLanguage: "ja",
+    author: { "@id": `${SITE_URL}/#person` },
+    publisher: { "@id": `${SITE_URL}/#person` },
+  };
+}
+
+export function breadcrumbJsonLd(note: Note) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ミラゲル", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "現場ノート", item: `${SITE_URL}/note` },
+      { "@type": "ListItem", position: 3, name: note.title, item: `${SITE_URL}/note/${note.slug}` },
+    ],
+  };
+}

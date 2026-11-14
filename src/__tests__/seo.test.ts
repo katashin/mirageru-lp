@@ -24,3 +24,32 @@ describe("SEOの住所", () => {
     expect(text).toContain("https://x.com/coach_katayama");
   });
 });
+
+import path from "path";
+import { getNote, type Note } from "@/lib/note";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
+
+describe("記事の構造化データ", () => {
+  const note = getNote("shinjin-shonichi", {
+    dir: path.join(__dirname, "fixtures/note"),
+    includeDrafts: true,
+  }) as Note;
+
+  it("Article の著者は片山さん、住所は /note/<slug>", () => {
+    const a = articleJsonLd(note);
+    expect(a["@type"]).toBe("Article");
+    expect(a.author["@id"]).toBe(`${SITE_URL}/#person`);
+    expect(a.url).toBe(`${SITE_URL}/note/shinjin-shonichi`);
+    expect(a.headline).toBe(note.title);
+    expect(a.datePublished).toBe("2026-11-20");
+  });
+
+  it("パンくずは トップ › 現場ノート › 記事 の3段", () => {
+    const b = breadcrumbJsonLd(note);
+    expect(b.itemListElement.map((i: { name: string }) => i.name)).toEqual([
+      "ミラゲル",
+      "現場ノート",
+      note.title,
+    ]);
+  });
+});
