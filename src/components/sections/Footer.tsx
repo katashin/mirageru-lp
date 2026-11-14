@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LINE_URL, SITE_NAME } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -14,14 +14,6 @@ export function Footer() {
           height={62}
           className="h-8 w-auto"
         />
-        <a
-          href={LINE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-[#64748B] underline-offset-2 transition-colors hover:text-[#169db2] hover:underline"
-        >
-          LINE公式アカウント
-        </a>
         {/* 同じページでも hashchange を起こしてタブを切り替えるため、Link ではなく a を使う */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
