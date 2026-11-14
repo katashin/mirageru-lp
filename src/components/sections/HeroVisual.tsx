@@ -13,7 +13,7 @@ function Person({ x, y, size = 24, color, width = 1.6 }: { x: number; y: number;
 
 function NowScene() {
   return (
-    <svg viewBox="0 0 120 92" className="h-auto w-full max-w-[150px]" aria-hidden>
+    <svg viewBox="0 0 120 92" className="h-auto w-full max-w-[150px] md:max-w-[190px]" aria-hidden>
       <g stroke="#cbd5e1" strokeWidth="1.4" strokeDasharray="3 3" fill="none">
         <path d="M20 18 L52 40" /><path d="M100 18 L68 40" /><path d="M20 74 L52 54" /><path d="M100 74 L68 54" />
       </g>
@@ -30,7 +30,7 @@ function NowScene() {
 
 function AfterScene() {
   return (
-    <svg viewBox="0 0 120 92" className="h-auto w-full max-w-[150px]" aria-hidden>
+    <svg viewBox="0 0 120 92" className="h-auto w-full max-w-[150px] md:max-w-[190px]" aria-hidden>
       <rect x="44" y="30" width="32" height="24" rx="4" fill="#fff" stroke="#0e7c8c" strokeWidth="1.5" />
       <path d="M50 37h20M50 42h20M50 47h13" stroke="#169db2" strokeWidth="1.5" />
       <g stroke="#169db2" strokeWidth="1.4" fill="none"><path d="M24 64 L46 52" /><path d="M60 66 L60 56" /><path d="M96 64 L74 52" /></g>
@@ -42,7 +42,7 @@ function AfterScene() {
   );
 }
 
-const ICON = "h-[18px] w-[18px] fill-none stroke-current [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.8]";
+const ICON = "h-[18px] w-[18px] md:h-[22px] md:w-[22px] fill-none stroke-current [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.8]";
 
 const STEPS = [
   { label: "見える化", out: "業務フロー図", icon: <svg viewBox="0 0 24 24" className={ICON}><rect x="3" y="4" width="6" height="5" rx="1" /><rect x="15" y="4" width="6" height="5" rx="1" /><rect x="9" y="15" width="6" height="5" rx="1" /><path d="M6 9v3h12V9M12 12v3" /></svg> },
@@ -55,43 +55,43 @@ const STEPS = [
 /** LP トップの右側：「今 → 仕組みのあと」と5ステップのチラ見せ */
 export function HeroVisual() {
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-[#e2e8f0] bg-gradient-to-b from-white to-[#f6fafb] p-4 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.35)] md:p-5">
+    <div className="flex flex-col gap-4 rounded-2xl border border-[#e2e8f0] bg-gradient-to-b from-white to-[#f6fafb] p-4 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.35)] md:gap-5 md:p-6">
       <div className="grid grid-cols-[1fr_16px_1fr] items-stretch gap-1.5">
         <div className="flex flex-col items-center gap-1 rounded-xl border border-[#e2e8f0] bg-[#F8FAFC] px-2 pb-3 pt-2">
-          <span className="text-[11px] font-black tracking-widest text-[#64748B]">今</span>
+          <span className="text-[11px] font-black tracking-widest text-[#64748B] md:text-[13px]">今</span>
           <NowScene />
-          <p className="text-center text-[11px] leading-snug text-[#475569]">質問も判断も、<br className="hidden md:block" />ぜんぶ店長へ</p>
+          <p className="text-center text-[11px] leading-snug text-[#475569] md:text-[13px]">質問も判断も、<br className="hidden md:block" />ぜんぶ店長へ</p>
         </div>
         <div className="flex items-center justify-center font-black text-[#169db2]" aria-hidden>›</div>
         <div className="flex flex-col items-center gap-1 rounded-xl border border-[#c7e9ee] bg-[#e3f4f6] px-2 pb-3 pt-2">
-          <span className="text-[11px] font-black tracking-widest text-[#0e7c8c]">仕組みのあと</span>
+          <span className="text-[11px] font-black tracking-widest text-[#0e7c8c] md:text-[13px]">仕組みのあと</span>
           <AfterScene />
-          <p className="text-center text-[11px] leading-snug text-[#0F172A]">手順書とリーダーで回り、<br className="hidden md:block" />店長は先を考える</p>
+          <p className="text-center text-[11px] leading-snug text-[#0F172A] md:text-[13px]">手順書とリーダーで回り、<br className="hidden md:block" />店長は先を考える</p>
         </div>
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="text-[11px] font-bold tracking-widest text-[#64748B]">進め方は5ステップ</span>
-        <Link href="/#step-method" className="text-xs font-bold text-[#0e7c8c]">
+        <span className="text-[11px] font-bold tracking-widest text-[#64748B] md:text-[13px]">進め方は5ステップ</span>
+        <Link href="/#step-method" className="text-xs font-bold text-[#0e7c8c] md:text-sm">
           くわしく見る ↓
         </Link>
       </div>
       <ol className="relative grid grid-cols-5">
-        <span aria-hidden className="absolute left-[10%] right-[10%] top-[17px] h-0.5 bg-gradient-to-r from-[#bfe6ec] to-[#0e7c8c]" />
+        <span aria-hidden className="absolute left-[10%] right-[10%] top-[17px] h-0.5 md:top-[22px] bg-gradient-to-r from-[#bfe6ec] to-[#0e7c8c]" />
         {STEPS.map((s, i) => {
           const last = i === STEPS.length - 1;
           return (
             <li key={s.label} className="relative flex flex-col items-center gap-1">
               <span
-                className={`flex h-[34px] w-[34px] items-center justify-center rounded-full border-2 ${
+                className={`flex h-[34px] w-[34px] items-center md:h-[44px] md:w-[44px] justify-center rounded-full border-2 ${
                   last ? "border-[#0e7c8c] bg-[#0e7c8c] text-white" : "border-[#169db2] bg-white text-[#0e7c8c]"
                 }`}
               >
                 {s.icon}
               </span>
-              <span className="font-mono text-[9px] text-[#0e7c8c]">0{i + 1}</span>
-              <span className="text-center text-[11px] font-bold leading-tight text-[#0F172A]">{s.label}</span>
-              <span className="text-center text-[9.5px] leading-tight text-[#64748B]">{s.out}</span>
+              <span className="font-mono text-[9px] text-[#0e7c8c] md:text-[11px]">0{i + 1}</span>
+              <span className="text-center text-[11px] font-bold leading-tight text-[#0F172A] md:text-[14px]">{s.label}</span>
+              <span className="text-center text-[9.5px] leading-tight text-[#64748B] md:text-[11.5px]">{s.out}</span>
             </li>
           );
         })}

@@ -18,7 +18,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-5xl px-5 py-10 md:px-8 md:py-20">
-        <div className="grid gap-6 md:grid-cols-[1fr_400px] md:items-center md:gap-x-14 md:gap-y-6">
+        <div className="grid gap-6 md:grid-cols-[1fr_440px] lg:grid-cols-[1fr_470px] md:items-center md:gap-x-10 md:gap-y-6">
           {/* 左上：だれ向け・見出し */}
           <div className="order-1 flex flex-col gap-4 md:order-none md:col-start-1 md:row-start-1">
             <p className="self-start rounded bg-[#e3f4f6] px-2.5 py-1 text-xs font-bold text-[#0e7c8c] md:text-sm">
