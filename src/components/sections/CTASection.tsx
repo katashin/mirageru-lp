@@ -65,13 +65,7 @@ export function CTASection() {
           <hr className="flex-1 border-[#1E293B]" />
         </div>
 
-        {/* メール CTA（サブ） */}
-        <a
-          href={`mailto:${EMAIL_ADDRESS}`}
-          className="inline-flex items-center gap-2 rounded-lg border border-[#334155] bg-transparent px-6 py-3 text-sm font-bold text-[#94A3B8] transition-colors hover:bg-[#1E293B] hover:text-white"
-        >
-          メールで問い合わせる
-        </a>
+        {/* メール（サブの入口）：アドレスとコピーを1つの枠に */}
         <CopyEmail email={EMAIL_ADDRESS} />
       </m.div>
     </SectionWrapper>

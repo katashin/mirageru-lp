@@ -13,10 +13,13 @@ describe("CTASection", () => {
     expect(links.length).toBeGreaterThanOrEqual(1);
   });
 
-  it("メール問い合わせリンクが表示される", () => {
+  it("メールアプリで開くリンクが、mailto で控えめに出る", () => {
     render(<CTASection />);
-    const emailLink = screen.getByText("メールで問い合わせる");
-    expect(emailLink).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /メールアプリで開く/ })).toHaveAttribute(
+      "href",
+      "mailto:shinsuke.katayama@mirageru.com"
+    );
+    expect(screen.queryByText("メールで問い合わせる")).toBeNull();
   });
 
   it("3ステップが全て表示される", () => {
@@ -31,6 +34,12 @@ import { fireEvent, act } from "@testing-library/react";
 import { EMAIL_ADDRESS } from "@/lib/constants";
 
 describe("メールアドレスのコピー", () => {
+  it("アドレスとコピーは1つの枠（ボタン）にまとまっている", () => {
+    render(<CTASection />);
+    const box = screen.getByRole("button", { name: /アドレスをコピー/ });
+    expect(box).toHaveTextContent(EMAIL_ADDRESS);
+  });
+
   const orig = navigator.clipboard;
   afterEach(() => {
     Object.defineProperty(navigator, "clipboard", { value: orig, configurable: true });
@@ -41,10 +50,10 @@ describe("メールアドレスのコピー", () => {
     Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
     render(<CTASection />);
     await act(async () => {
-      fireEvent.click(screen.getByRole("button", { name: "アドレスをコピー" }));
+      fireEvent.click(screen.getByRole("button", { name: /アドレスをコピー/ }));
     });
     expect(writeText).toHaveBeenCalledWith(EMAIL_ADDRESS);
-    expect(screen.getByRole("button", { name: "コピーしました" })).toBeInTheDocument();
+    expect(screen.getByText("コピーしました")).toBeInTheDocument();
   });
 
   it("コピーができない環境でも止まらず、アドレスを選んだ状態にする", async () => {
@@ -54,7 +63,7 @@ describe("メールアドレスのコピー", () => {
     });
     render(<CTASection />);
     await act(async () => {
-      fireEvent.click(screen.getByRole("button", { name: "アドレスをコピー" }));
+      fireEvent.click(screen.getByRole("button", { name: /アドレスをコピー/ }));
     });
     expect(window.getSelection()?.toString()).toBe(EMAIL_ADDRESS);
   });
