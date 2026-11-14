@@ -31,7 +31,7 @@ xPosts:
   - https://x.com/coach_katayama/status/2112469119157096538
   - https://x.com/coach_katayama/status/2112469119559774524
   - https://x.com/coach_katayama/status/2112469119857562111
-draft: true
+draft: false
 ---
 
 ニトリでフロアマネジャーをしていたころ、アルバイトで入ってくれた新人が、初日の休憩時間にそのまま帰ってしまったことがあります。
