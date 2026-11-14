@@ -20,3 +20,39 @@ describe("Navbar", () => {
     expect(screen.getByRole("link", { name: "ミラゲル" })).toHaveAttribute("href", "/");
   });
 });
+
+import { AudienceProvider } from "@/components/audience/AudienceContext";
+import { StickyLineBar } from "@/components/StickyLineBar";
+import { Footer } from "@/components/sections/Footer";
+import { LINE_URL } from "@/lib/constants";
+import { KATARIAI_LINE_URL } from "@/lib/katariai";
+
+describe("タブに合わせて変わるボタン", () => {
+  beforeEach(() => window.history.replaceState(null, "", "/"));
+
+  it("タブの無いページ（現場ノートなど）では、会社向けの「無料相談」", () => {
+    render(<><Navbar /><StickyLineBar /></>);
+    expect(screen.getByRole("link", { name: "無料相談" })).toHaveAttribute("href", LINE_URL);
+    expect(screen.getByRole("link", { name: "LINEで無料相談" })).toHaveAttribute("href", LINE_URL);
+  });
+
+  it("個人向けのタブでは「無料面談」がカタリアイのLINEへ。会社向けのリンクとLINEは出さない", () => {
+    window.history.replaceState(null, "", "/#katariai");
+    render(
+      <AudienceProvider>
+        <Navbar />
+        <StickyLineBar />
+      </AudienceProvider>
+    );
+    expect(screen.getByRole("link", { name: "無料面談" })).toHaveAttribute("href", KATARIAI_LINE_URL);
+    expect(screen.getByRole("link", { name: "無料面談を申し込む" })).toHaveAttribute("href", KATARIAI_LINE_URL);
+    expect(screen.getByText("60分・Google Meet")).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "課題" })).toBeNull();
+    screen.getAllByRole("link").forEach((a) => expect(a).not.toHaveAttribute("href", LINE_URL));
+  });
+
+  it("フッターから個人向けのタブへ行ける", () => {
+    render(<Footer />);
+    expect(screen.getByRole("link", { name: /管理職・個人の方/ })).toHaveAttribute("href", "/#katariai");
+  });
+});

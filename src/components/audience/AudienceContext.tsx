@@ -1,12 +1,14 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useSyncExternalStore } from "react";
 
 /** だれ向けのタブを見ているか */
 export type Audience = "business" | "katariai";
 
 export const AUDIENCE_TABS_ID = "audience-tabs";
 const KATARIAI_HASH = "#katariai";
+// replaceState では hashchange が起きないので、自分で知らせる
+const CHANGE_EVENT = "audiencechange";
 
 type AudienceValue = {
   audience: Audience;
@@ -16,27 +18,26 @@ type AudienceValue = {
 // provider が無いページ（現場ノートなど）では、いつも会社向け
 const AudienceCtx = createContext<AudienceValue>({ audience: "business", select: () => {} });
 
-const fromHash = (): Audience =>
-  typeof window !== "undefined" && window.location.hash === KATARIAI_HASH ? "katariai" : "business";
+// タブの状態は住所の末尾が決める：#katariai なら個人向け、それ以外（#pain など）は会社向け
+function subscribe(onChange: () => void) {
+  window.addEventListener("hashchange", onChange);
+  window.addEventListener(CHANGE_EVENT, onChange);
+  return () => {
+    window.removeEventListener("hashchange", onChange);
+    window.removeEventListener(CHANGE_EVENT, onChange);
+  };
+}
+const getSnapshot = (): Audience => (window.location.hash === KATARIAI_HASH ? "katariai" : "business");
+// サーバーでつくる HTML は会社向け
+const getServerSnapshot = (): Audience => "business";
 
 export function AudienceProvider({ children }: { children: React.ReactNode }) {
-  // 最初の表示は会社向け（サーバーでつくるHTMLと合わせる）。住所の末尾はこのあと読む
-  const [audience, setAudience] = useState<Audience>("business");
-
-  useEffect(() => {
-    const sync = () => {
-      // 会社向けのページ内リンク（#pain など）では、今のタブを変えない
-      if (window.location.hash === KATARIAI_HASH) setAudience("katariai");
-    };
-    setAudience(fromHash());
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
-  }, []);
+  const audience = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const select = useCallback((next: Audience, opts?: { scroll?: boolean }) => {
-    setAudience(next);
     const url = window.location.pathname + window.location.search + (next === "katariai" ? KATARIAI_HASH : "");
     window.history.replaceState(null, "", url);
+    window.dispatchEvent(new Event(CHANGE_EVENT));
     if (opts?.scroll) {
       document.getElementById(AUDIENCE_TABS_ID)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }

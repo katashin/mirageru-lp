@@ -7,7 +7,7 @@ import { HeroVisual } from "./HeroVisual";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white pt-14 md:pt-20">
+    <section className="relative overflow-hidden bg-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

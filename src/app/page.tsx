@@ -4,6 +4,10 @@ import { Hero } from "@/components/sections/Hero";
 import { NoteShowcase } from "@/components/sections/NoteShowcase";
 import { StickyLineBar } from "@/components/StickyLineBar";
 import { getAllNotes, showDrafts } from "@/lib/note";
+import { AudienceProvider } from "@/components/audience/AudienceContext";
+import { AudienceGate } from "@/components/sections/AudienceGate";
+import { AudienceTabs } from "@/components/sections/AudienceTabs";
+import { Katariai } from "@/components/sections/katariai/Katariai";
 
 const Pain = dynamic(() => import("@/components/sections/Pain").then((m) => ({ default: m.Pain })));
 const BeforeAfter = dynamic(() => import("@/components/sections/BeforeAfter").then((m) => ({ default: m.BeforeAfter })));
@@ -19,23 +23,32 @@ const Footer = dynamic(() => import("@/components/sections/Footer").then((m) => 
 export default function Home() {
   const notes = getAllNotes({ includeDrafts: showDrafts() });
   return (
-    <>
+    <AudienceProvider>
       <Navbar />
       <main>
-        <Hero />
-        <Pain />
-        <BeforeAfter />
-        <USP />
-        <StepMethod />
-        <Why />
-        <NoteShowcase notes={notes} />
-        <Profile />
-        <WhyStory />
-        <Services />
-        <CTASection />
+        {/* 最初の画面：会社向け・個人向けの2つの入口。その下のタブで中身を切り替える */}
+        <AudienceGate />
+        <AudienceTabs
+          business={
+            <>
+              <Hero />
+              <Pain />
+              <BeforeAfter />
+              <USP />
+              <StepMethod />
+              <Why />
+              <NoteShowcase notes={notes} />
+              <Profile />
+              <WhyStory />
+              <Services />
+              <CTASection />
+            </>
+          }
+          katariai={<Katariai />}
+        />
       </main>
       <Footer />
       <StickyLineBar />
-    </>
+    </AudienceProvider>
   );
 }
