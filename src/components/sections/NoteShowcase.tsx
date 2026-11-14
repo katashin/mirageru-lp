@@ -34,7 +34,7 @@ export function NoteShowcase({ notes }: { notes: Note[] }) {
               href={`/note/${n.slug}`}
               className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white transition-shadow hover:shadow-md"
             >
-              <span className="flex h-36 flex-col justify-between p-4 text-white" style={gridStyle}>
+              <span className="flex h-36 flex-col justify-start gap-3 p-4 text-white" style={gridStyle}>
                 <span className="font-mono text-[11px] text-[#6fd6e6]">
                   {noLabel(n.no)} ・ {n.theme}
                 </span>
