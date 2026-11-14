@@ -109,3 +109,11 @@ export function getRelatedNotes(note: Note, limit = 3, pool?: Note[]): Note[] {
   const rest = all.filter((n) => n.theme !== note.theme);
   return [...same, ...rest].slice(0, limit);
 }
+
+/** 本文の "## 見出し" を目次用に取り出す。id は出てきた順に s1, s2, … */
+export function extractHeadings(body: string): { id: string; text: string }[] {
+  return body
+    .split("\n")
+    .filter((l) => /^##\s+/.test(l) && !/^###/.test(l))
+    .map((l, i) => ({ id: `s${i + 1}`, text: l.replace(/^##\s+/, "").trim() }));
+}

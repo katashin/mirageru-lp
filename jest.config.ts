@@ -18,4 +18,18 @@ const config: Config = {
   ],
 };
 
-export default createJestConfig(config);
+// react-markdown と remark の仲間は ESM だけで配られているので、Jest で変換する
+const ESM_PACKAGES = [
+  "react-markdown", "remark-.*", "mdast-.*", "micromark.*", "unist-.*", "unified", "bail",
+  "is-plain-obj", "trough", "vfile.*", "hast-.*", "property-information", "space-separated-tokens",
+  "comma-separated-tokens", "decode-named-character-reference", "character-entities.*", "ccount",
+  "escape-string-regexp", "markdown-table", "longest-streak", "zwitch", "devlop",
+  "html-url-attributes", "trim-lines", "estree-util-.*", "style-to-.*", "inline-style-parser",
+  "@ungap", "is-.*",
+].join("|");
+
+export default async function jestConfig() {
+  const resolved = await createJestConfig(config)();
+  resolved.transformIgnorePatterns = [`/node_modules/(?!(${ESM_PACKAGES})/)`];
+  return resolved;
+}
