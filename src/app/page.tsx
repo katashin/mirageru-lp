@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
-import { NoteNewest } from "@/components/sections/NoteNewest";
+import { NoteShowcase } from "@/components/sections/NoteShowcase";
 import { StickyLineBar } from "@/components/StickyLineBar";
 import { getAllNotes, showDrafts } from "@/lib/note";
 
@@ -23,12 +23,12 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <NoteNewest notes={notes} />
         <Pain />
         <BeforeAfter />
         <USP />
         <StepMethod />
         <Why />
+        <NoteShowcase notes={notes} />
         <Profile />
         <WhyStory />
         <Services />
