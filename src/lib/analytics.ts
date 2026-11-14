@@ -5,7 +5,11 @@ export type LinePlace =
   | "article_mid"
   | "article_end"
   | "cta_section"
-  | "newest";
+  | "newest"
+  | "katariai_hero"
+  | "katariai_end"
+  | "katariai_header"
+  | "katariai_sticky";
 
 type GtagWindow = Window & { gtag?: (...args: unknown[]) => void };
 

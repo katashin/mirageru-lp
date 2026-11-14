@@ -5,6 +5,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-sans-jp);
+  --font-serif-jp: var(--font-mincho), "Shippori Mincho B1", serif;
   --color-mg-primary: var(--mg-primary);
   --color-mg-accent: var(--mg-accent);
   --color-ring: var(--ring);

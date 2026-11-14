@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_JP } from "next/font/google";
+import { Inter, Noto_Sans_JP, Shippori_Mincho_B1 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { MotionProvider } from "@/components/MotionProvider";
@@ -19,6 +19,15 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "optional",
+});
+
+// カタリアイの見出しだけで使う明朝体
+const shipporiMincho = Shippori_Mincho_B1({
+  variable: "--font-mincho",
+  subsets: ["latin"],
+  weight: ["800"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -45,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${inter.variable} ${notoSansJP.variable} h-full antialiased`}
+      className={`${inter.variable} ${notoSansJP.variable} ${shipporiMincho.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
