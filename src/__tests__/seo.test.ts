@@ -59,7 +59,7 @@ import { getAllNotes } from "@/lib/note";
 
 describe("サイトマップと記事", () => {
   it("記事が無いときは、トップと /note の2件", () => {
-    expect(sitemap().map((e) => e.url)).toEqual([SITE_URL, `${SITE_URL}/note`]);
+    expect(buildSitemap([]).map((e) => e.url)).toEqual([SITE_URL, `${SITE_URL}/note`]);
   });
 
   it("公開の記事だけを載せ、更新日を lastModified にする", () => {
