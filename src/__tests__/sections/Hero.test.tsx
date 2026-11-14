@@ -15,10 +15,20 @@ describe("Hero", () => {
     );
   });
 
-  it("写真と経歴を出す", () => {
+  it("右側は「今 → 仕組みのあと」の絵。写真と経歴は出さない", () => {
     render(<Hero />);
-    expect(screen.getByAltText("片山 真介")).toBeInTheDocument();
-    expect(screen.getByText(CAREER_SHORT)).toBeInTheDocument();
+    expect(screen.getByText("今")).toBeInTheDocument();
+    expect(screen.getByText("仕組みのあと")).toBeInTheDocument();
+    expect(screen.queryByAltText("片山 真介")).toBeNull();
+    expect(screen.queryByText(CAREER_SHORT)).toBeNull();
+  });
+
+  it("5ステップをアイコンつきでチラ見せし、くわしい所へ飛べる", () => {
+    render(<Hero />);
+    ["見える化", "課題の特定", "マニュアル", "作業割当", "1on1"].forEach((t) =>
+      expect(screen.getByText(t)).toBeInTheDocument()
+    );
+    expect(screen.getByRole("link", { name: /くわしく見る/ })).toHaveAttribute("href", "/#step-method");
   });
 
   it("LINEボタンと補足を出す", () => {
@@ -27,10 +37,4 @@ describe("Hero", () => {
     expect(screen.getByText(LINE_NOTE)).toBeInTheDocument();
   });
 
-  it("残りの強み2つを短く出し、紺のパネルは出さない", () => {
-    render(<Hero />);
-    expect(screen.getByText("御社専用の仕組みを、ゼロから一緒につくる")).toBeInTheDocument();
-    expect(screen.getByText("現場に定着するまで、一緒に動ききる")).toBeInTheDocument();
-    expect(screen.queryByText("なぜ ミラゲル か")).toBeNull();
-  });
 });
