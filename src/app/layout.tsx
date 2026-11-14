@@ -3,6 +3,8 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { MotionProvider } from "@/components/MotionProvider";
+import { SITE_URL } from "@/lib/constants";
+import { jsonLd } from "@/lib/jsonLd";
 
 const GA_ID = "G-BDNEB2NYYD";
 
@@ -20,6 +22,8 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   title: "店舗業務標準化・リーダー育成の伴走支援｜MiraGeru LP",
   description:
     "店舗ビジネス・個人事業主の業務標準化とリーダー育成を伴走支援。自分がいなくても回る仕組みを設計し、マニュアル作成から後任育成まで完遂します。",
@@ -32,32 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://mirageru-lp.mirageru.com/#person",
-      name: "片山 真介",
-      jobTitle: "業務標準化・リーダー育成 伴走支援コンサルタント",
-      description:
-        "ニトリで培った業務標準化スキルとコーチングで、店舗ビジネス・スモールビジネスの自走組織化を支援。",
-      url: "https://mirageru-lp.mirageru.com",
-      sameAs: ["https://twitter.com/mirageru"],
-    },
-    {
-      "@type": "Service",
-      "@id": "https://mirageru-lp.mirageru.com/#service",
-      name: "業務標準化・リーダー育成 伴走支援",
-      provider: { "@id": "https://mirageru-lp.mirageru.com/#person" },
-      description:
-        "店舗ビジネス・個人事業主・スモールビジネスオーナーの業務標準化とリーダー育成を伴走支援。マニュアル作成から後任育成まで完遂。",
-      areaServed: "JP",
-      serviceType: "BusinessConsulting",
-      url: "https://mirageru-lp.mirageru.com",
-    },
-  ],
-};
 
 export default function RootLayout({
   children,

@@ -1,4 +1,6 @@
 export const LINE_URL = "https://lin.ee/q0dw60b";
+export const SITE_URL = "https://lp.mirageru.com";
+export const X_URL = "https://x.com/coach_katayama";
 export const EMAIL_ADDRESS = "shinsuke.katayama@mirageru.com";
 
 export const SITE_NAME = "ミラゲル";
