@@ -27,7 +27,7 @@ xPosts:
   - https://x.com/coach_katayama/status/2085607369589793193
   - https://x.com/coach_katayama/status/2114964309742645440
   - https://x.com/coach_katayama/status/2117904937245901008
-draft: true
+draft: false
 ---
 
 「業務改善をしよう」と決めたとき、多くの店長がやることがあります。目についた困りごとから、すぐに手をつけることです。
