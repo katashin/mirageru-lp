@@ -16,6 +16,8 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const label = note ? `現場ノート No.${String(note.no).padStart(2, "0")} ・ ${note.theme}` : "現場ノート";
   const title = note?.title ?? "現場ノート";
   const subtitle = note?.subtitle ?? "";
+  // 長い題名でも 1200×630 からはみ出さないよう、字数で文字の大きさを下げる
+  const titleSize = title.length > 44 ? 50 : title.length > 34 ? 56 : 64;
   const font = await loadOgFont(`${label}${title}${subtitle}ミラゲル`);
 
   return new ImageResponse(
@@ -38,7 +40,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
       >
         <div style={{ display: "flex", fontSize: 30, color: "#6fd6e6", letterSpacing: 1 }}>{label}</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ display: "flex", fontSize: 64, fontWeight: 900, lineHeight: 1.3 }}>{title}</div>
+          <div style={{ display: "flex", fontSize: titleSize, fontWeight: 900, lineHeight: 1.3 }}>{title}</div>
           {subtitle && (
             <div style={{ display: "flex", fontSize: 34, color: "rgba(255,255,255,.82)" }}>{subtitle}</div>
           )}

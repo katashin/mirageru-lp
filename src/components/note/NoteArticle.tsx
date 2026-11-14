@@ -8,6 +8,8 @@ import { NoteBody } from "./NoteBody";
 import { Sources } from "./Sources";
 import { EndCta } from "./EndCta";
 import { RelatedNotes } from "./RelatedNotes";
+import { ShareButtons } from "./ShareButtons";
+import { SITE_URL } from "@/lib/constants";
 
 export function NoteArticle({ note, related }: { note: Note; related: Note[] }) {
   return (
@@ -20,6 +22,7 @@ export function NoteArticle({ note, related }: { note: Note; related: Note[] }) 
         <Checklist items={note.checklist} slug={note.slug} />
         <NoteBody body={note.body} />
         <Sources sources={note.sources} />
+        <ShareButtons url={`${SITE_URL}/note/${note.slug}`} title={note.title} slug={note.slug} />
         <EndCta note={note} />
         <RelatedNotes notes={related} />
       </div>

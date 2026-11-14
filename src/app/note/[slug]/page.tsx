@@ -6,6 +6,7 @@ import { NoteArticle } from "@/components/note/NoteArticle";
 import { StickyLineBar } from "@/components/StickyLineBar";
 import { getAllNotes, getNote, getRelatedNotes, showDrafts } from "@/lib/note";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const dynamicParams = false;
 
@@ -26,6 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     robots: note.draft ? { index: false, follow: false } : undefined,
     openGraph: {
       title: note.title,
+      url: `${SITE_URL}/note/${note.slug}`,
+      siteName: SITE_NAME,
       description: note.description,
       type: "article",
       locale: "ja_JP",
