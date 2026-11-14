@@ -8,11 +8,10 @@ import { NoteBody } from "./NoteBody";
 import { Sources } from "./Sources";
 import { EndCta } from "./EndCta";
 import { RelatedNotes } from "./RelatedNotes";
-import { StickyLineBar } from "@/components/StickyLineBar";
 
 export function NoteArticle({ note, related }: { note: Note; related: Note[] }) {
   return (
-    <article className="bg-white pb-24 md:pb-12">
+    <article className="bg-white pb-12">
       <NoteHeader note={note} />
       <div className="mx-auto flex max-w-3xl flex-col gap-7 px-5 py-8 md:px-8">
         <Byline note={note} />
@@ -24,7 +23,6 @@ export function NoteArticle({ note, related }: { note: Note; related: Note[] }) 
         <EndCta note={note} />
         <RelatedNotes notes={related} />
       </div>
-      <StickyLineBar slug={note.slug} />
     </article>
   );
 }

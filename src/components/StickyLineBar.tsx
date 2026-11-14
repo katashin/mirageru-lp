@@ -6,6 +6,9 @@ import { trackLineClick } from "@/lib/analytics";
 /** スマホ幅だけ、画面の下に LINE ボタンを出す */
 export function StickyLineBar({ slug }: { slug?: string }) {
   return (
+    <>
+    {/* バーの高さの分のすきま（ページの最後がバーに隠れないように） */}
+    <div data-testid="sticky-spacer" className="h-20 md:hidden" aria-hidden />
     <div
       className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-[#e2e8f0] bg-white/95 px-4 pt-2 backdrop-blur md:hidden"
       style={{ paddingBottom: "calc(0.6rem + env(safe-area-inset-bottom, 0px))" }}
@@ -22,5 +25,6 @@ export function StickyLineBar({ slug }: { slug?: string }) {
       </a>
       <span className="text-xs leading-tight text-[#64748B]">50分・オンライン</span>
     </div>
+    </>
   );
 }

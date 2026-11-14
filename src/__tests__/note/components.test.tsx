@@ -95,3 +95,28 @@ describe("記事ページの部品", () => {
     expect(container).toBeEmptyDOMElement();
   });
 });
+
+describe("目次と見出しの id（点検の指摘）", () => {
+  const body = [
+    "## 新人の**初日**に",
+    "本文",
+    "```",
+    "## これはコードの中",
+    "```",
+    "## 同じ見出し",
+    "## 同じ見出し",
+  ].join("\n");
+
+  it("太字の見出しでも目次の文字に ** が残らない。コードの中は数えない", () => {
+    expect(extractHeadings(body)).toEqual([
+      { id: "s1", text: "新人の初日に" },
+      { id: "s2", text: "同じ見出し" },
+      { id: "s3", text: "同じ見出し" },
+    ]);
+  });
+
+  it("本文の h2 は出てきた順に s1, s2, s3", () => {
+    const { container } = render(<NoteBody body={body} />);
+    expect([...container.querySelectorAll("h2")].map((h) => h.id)).toEqual(["s1", "s2", "s3"]);
+  });
+});

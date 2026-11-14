@@ -6,6 +6,8 @@ import { trackLineClick, type LinePlace } from "@/lib/analytics";
 
 interface CTAButtonProps {
   place: LinePlace;
+  /** 飛び先。省略すると会社向けの LINE */
+  href?: string;
   label?: string;
   slug?: string;
   className?: string;
@@ -13,13 +15,14 @@ interface CTAButtonProps {
 
 export function CTAButton({
   place,
+  href = LINE_URL,
   label = "LINEで無料相談する",
   slug,
   className = "",
 }: CTAButtonProps) {
   return (
     <m.a
-      href={LINE_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackLineClick(place, slug)}

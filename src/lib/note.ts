@@ -12,9 +12,14 @@ const DEFAULT_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), "content"
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const REQUIRED = ["no", "title", "theme", "date"] as const;
 
-/** 本番（Vercel の production）だけ下書きを隠す。Preview と手元では見せる */
+/**
+ * 下書きを見せるのは、Vercel の Preview・開発中（next dev）・SHOW_DRAFTS=1 のときだけ。
+ * それ以外（本番、VERCEL_ENV が無いビルド）は必ずかくす
+ */
 export function showDrafts(): boolean {
-  return process.env.VERCEL_ENV !== "production";
+  if (process.env.SHOW_DRAFTS === "1") return true;
+  if (process.env.VERCEL_ENV === "preview") return true;
+  return process.env.NODE_ENV === "development";
 }
 
 function toDateString(v: unknown): string {
@@ -89,10 +94,26 @@ export function getRelatedNotes(note: Note, limit = 3, pool?: Note[]): Note[] {
   return [...same, ...rest].slice(0, limit);
 }
 
-/** 本文の "## 見出し" を目次用に取り出す。id は出てきた順に s1, s2, … */
+/** 見出しの文字から Markdown の飾り（**太字**、`コード`、[リンク](url)）を外す */
+function plainHeading(t: string): string {
+  return t
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/(\*\*|__|\*|_|`)/g, "")
+    .trim();
+}
+
+/** 本文の "## 見出し" を目次用に取り出す。コードの中は数えない。id は出てきた順に s1, s2, … */
 export function extractHeadings(body: string): { id: string; text: string }[] {
-  return body
-    .split("\n")
-    .filter((l) => /^##\s+/.test(l) && !/^###/.test(l))
-    .map((l, i) => ({ id: `s${i + 1}`, text: l.replace(/^##\s+/, "").trim() }));
+  const out: { id: string; text: string }[] = [];
+  let inCode = false;
+  for (const line of body.split("\n")) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inCode = !inCode;
+      continue;
+    }
+    if (!inCode && /^##\s+/.test(line) && !/^###/.test(line)) {
+      out.push({ id: `s${out.length + 1}`, text: plainHeading(line.replace(/^##\s+/, "")) });
+    }
+  }
+  return out;
 }

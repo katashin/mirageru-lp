@@ -45,3 +45,15 @@ describe("StickyLineBar", () => {
     expect(screen.getByText("50分・オンライン")).toBeInTheDocument();
   });
 });
+
+describe("点検のあとの追加", () => {
+  it("CTAButton は飛び先を差しかえられる（個人向けの LINE など）", () => {
+    render(<CTAButton place="hero" href="https://lin.ee/other" />);
+    expect(screen.getByRole("link")).toHaveAttribute("href", "https://lin.ee/other");
+  });
+
+  it("StickyLineBar はスマホでページの最後が隠れないよう、高さの分のすきまを置く", () => {
+    const { container } = render(<StickyLineBar />);
+    expect(container.querySelector('[data-testid="sticky-spacer"]')).not.toBeNull();
+  });
+});

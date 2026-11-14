@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { NoteArticle } from "@/components/note/NoteArticle";
+import { StickyLineBar } from "@/components/StickyLineBar";
 import { getAllNotes, getNote, getRelatedNotes, showDrafts } from "@/lib/note";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonLd";
 
@@ -48,6 +49,7 @@ export default async function NotePage({ params }: Props) {
         <NoteArticle note={note} related={related} />
       </main>
       <Footer />
+      <StickyLineBar slug={note.slug} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -23,7 +23,7 @@ export default function NoteIndexPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#F8FAFC] pb-20 md:pb-0">
+      <main className="min-h-screen bg-[#F8FAFC]">
         <NoteIndex notes={notes} />
       </main>
       <Footer />

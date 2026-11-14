@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getAllNotes, getNote, showDrafts } from "@/lib/note";
+import { loadOgFont } from "@/lib/ogFont";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -9,28 +10,13 @@ export function generateStaticParams() {
   return getAllNotes({ includeDrafts: showDrafts() }).map((n) => ({ slug: n.slug }));
 }
 
-/** 画像に出す文字だけを含む Noto Sans JP（太字）を Google Fonts から取る */
-async function loadFont(text: string): Promise<ArrayBuffer | null> {
-  try {
-    const css = await (
-      await fetch(
-        `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&text=${encodeURIComponent(text)}`
-      )
-    ).text();
-    const url = css.match(/src: url\((.+?)\) format/)?.[1];
-    return url ? await (await fetch(url)).arrayBuffer() : null;
-  } catch {
-    return null;
-  }
-}
-
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const note = getNote(slug, { includeDrafts: showDrafts() });
   const label = note ? `現場ノート No.${String(note.no).padStart(2, "0")} ・ ${note.theme}` : "現場ノート";
   const title = note?.title ?? "現場ノート";
   const subtitle = note?.subtitle ?? "";
-  const font = await loadFont(`${label}${title}${subtitle}ミラゲル`);
+  const font = await loadOgFont(`${label}${title}${subtitle}ミラゲル`);
 
   return new ImageResponse(
     (

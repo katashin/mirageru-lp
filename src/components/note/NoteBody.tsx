@@ -1,16 +1,9 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import type { ReactNode } from "react";
-import { extractHeadings } from "@/lib/note";
-
-function textOf(children: ReactNode): string {
-  if (typeof children === "string" || typeof children === "number") return String(children);
-  if (Array.isArray(children)) return children.map(textOf).join("");
-  return "";
-}
 
 export function NoteBody({ body }: { body: string }) {
-  const ids = new Map(extractHeadings(body).map((h) => [h.text, h.id]));
+  // h2 は出てきた順に s1, s2, … （extractHeadings と同じ数え方）
+  let h2Count = 0;
   return (
     <div className="note-body flex flex-col gap-5 text-[16px] leading-[1.95] text-[#0F172A]">
       <ReactMarkdown
@@ -18,7 +11,7 @@ export function NoteBody({ body }: { body: string }) {
         components={{
           h2: ({ children }) => (
             <h2
-              id={ids.get(textOf(children).trim())}
+              id={`s${++h2Count}`}
               className="mt-6 scroll-mt-24 border-b-2 border-[#e3f4f6] pb-2 text-xl font-black"
             >
               {children}

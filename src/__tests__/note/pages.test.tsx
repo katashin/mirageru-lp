@@ -51,10 +51,6 @@ describe("記事のページ", () => {
     }
   });
 
-  it("スマホの下の LINE バーがある", () => {
-    render(<NoteArticle note={full} related={[]} />);
-    expect(screen.getByRole("link", { name: "LINEで無料相談" })).toBeInTheDocument();
-  });
 });
 
 describe("下書きの印", () => {

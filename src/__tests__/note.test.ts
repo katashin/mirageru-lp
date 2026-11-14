@@ -58,21 +58,34 @@ describe("記事の読み込み", () => {
 });
 
 describe("showDrafts", () => {
-  const orig = process.env.VERCEL_ENV;
+  const keys = ["VERCEL_ENV", "NODE_ENV", "SHOW_DRAFTS"] as const;
+  const orig = Object.fromEntries(keys.map((k) => [k, process.env[k]]));
+  const env = process.env as Record<string, string | undefined>;
   afterEach(() => {
-    if (orig === undefined) delete process.env.VERCEL_ENV;
-    else process.env.VERCEL_ENV = orig;
+    keys.forEach((k) => (orig[k] === undefined ? delete env[k] : (env[k] = orig[k])));
   });
 
   it("本番では false", () => {
-    process.env.VERCEL_ENV = "production";
+    env.VERCEL_ENV = "production";
     expect(showDrafts()).toBe(false);
   });
 
-  it("Preview や手元では true", () => {
-    delete process.env.VERCEL_ENV;
+  it("VERCEL_ENV が無い本番ビルドでも false（下書きは基本かくす）", () => {
+    delete env.VERCEL_ENV;
+    delete env.SHOW_DRAFTS;
+    env.NODE_ENV = "production";
+    expect(showDrafts()).toBe(false);
+  });
+
+  it("Preview・開発中・SHOW_DRAFTS=1 では true", () => {
+    env.NODE_ENV = "production";
+    env.VERCEL_ENV = "preview";
     expect(showDrafts()).toBe(true);
-    process.env.VERCEL_ENV = "preview";
+    delete env.VERCEL_ENV;
+    env.NODE_ENV = "development";
+    expect(showDrafts()).toBe(true);
+    env.NODE_ENV = "production";
+    env.SHOW_DRAFTS = "1";
     expect(showDrafts()).toBe(true);
   });
 });
