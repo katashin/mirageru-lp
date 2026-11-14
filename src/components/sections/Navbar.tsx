@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import { m } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { LINE_URL, NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { trackLineClick } from "@/lib/analytics";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,18 +26,18 @@ export function Navbar() {
       }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 md:px-8">
-        <a href="#" aria-label={SITE_NAME} className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 md:px-8 md:py-4">
+        <Link href="/" aria-label={SITE_NAME} className="flex shrink-0 items-center gap-2">
           <Image
             src="/icon.png"
             alt={SITE_NAME}
             width={36}
             height={36}
-            className="h-9 w-9"
+            className="h-8 w-8 md:h-9 md:w-9"
             priority
           />
-          <span className="text-base font-bold text-[#0F172A]">ミラゲル</span>
-        </a>
+          <span className="whitespace-nowrap text-base font-bold text-[#0F172A]">ミラゲル</span>
+        </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.slice(0, -1).map((link) => (
@@ -49,16 +51,22 @@ export function Navbar() {
           ))}
         </nav>
 
+        <div className="flex items-center gap-3 md:gap-4">
+        <Link href="/note" className="whitespace-nowrap text-xs font-bold md:text-sm text-[#0e7c8c] transition-colors hover:text-[#0F172A]">
+          現場ノート
+        </Link>
         <m.a
           href={LINE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg bg-[#169db2] px-5 py-2 text-sm font-bold text-white"
-          whileHover={{ boxShadow: "0 0 16px 4px rgba(22,157,178,0.35)" }}
+          onClick={() => trackLineClick("header")}
+          className="whitespace-nowrap rounded-full bg-[#0e7c8c] px-4 py-2 text-sm font-bold text-white md:px-5"
+          whileHover={{ boxShadow: "0 0 16px 4px rgba(14,124,140,0.3)" }}
           whileTap={{ scale: 0.97 }}
         >
           無料相談
         </m.a>
+        </div>
       </div>
     </m.header>
   );

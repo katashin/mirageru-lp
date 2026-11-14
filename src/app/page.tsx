@@ -1,6 +1,9 @@
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
+import { NoteNewest } from "@/components/sections/NoteNewest";
+import { StickyLineBar } from "@/components/StickyLineBar";
+import { getAllNotes, showDrafts } from "@/lib/note";
 
 const Pain = dynamic(() => import("@/components/sections/Pain").then((m) => ({ default: m.Pain })));
 const BeforeAfter = dynamic(() => import("@/components/sections/BeforeAfter").then((m) => ({ default: m.BeforeAfter })));
@@ -14,11 +17,13 @@ const CTASection = dynamic(() => import("@/components/sections/CTASection").then
 const Footer = dynamic(() => import("@/components/sections/Footer").then((m) => ({ default: m.Footer })));
 
 export default function Home() {
+  const notes = getAllNotes({ includeDrafts: showDrafts() });
   return (
     <>
       <Navbar />
       <main>
         <Hero />
+        <NoteNewest notes={notes} />
         <Pain />
         <BeforeAfter />
         <USP />
@@ -30,6 +35,7 @@ export default function Home() {
         <CTASection />
       </main>
       <Footer />
+      <StickyLineBar />
     </>
   );
 }

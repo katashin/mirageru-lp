@@ -22,12 +22,12 @@ export const SITE_NAME = "ミラゲル";
 export const REPRESENTATIVE_NAME = "片山 真介";
 
 export const NAV_LINKS = [
-  { label: "課題", href: "#pain" },
-  { label: "強み", href: "#usp" },
-  { label: "進め方", href: "#step-method" },
-  { label: "サービス", href: "#services" },
-  { label: "プロフィール", href: "#profile" },
-  { label: "無料相談", href: "#cta" },
+  { label: "課題", href: "/#pain" },
+  { label: "強み", href: "/#usp" },
+  { label: "進め方", href: "/#step-method" },
+  { label: "サービス", href: "/#services" },
+  { label: "プロフィール", href: "/#profile" },
+  { label: "無料相談", href: "/#cta" },
 ] as const;
 
 export const PAIN_ITEMS = [

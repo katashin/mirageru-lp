@@ -1,130 +1,82 @@
 "use client";
 
+import Image from "next/image";
 import { m } from "framer-motion";
 import { CTAButton } from "@/components/CTAButton";
+import { CAREER_SHORT, LINE_NOTE } from "@/lib/constants";
 
-const TRUST_ITEMS = [
-  "ニトリ15年 × 3業態・3規模の現場改革経験",
-  "御社専用の仕組みをゼロから一緒につくる",
-  "現場に定着するまで実際に動ききる伴走支援",
+const POINTS = [
+  "御社専用の仕組みを、ゼロから一緒につくる",
+  "現場に定着するまで、一緒に動ききる",
 ] as const;
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-white pt-20">
+    <section className="relative overflow-hidden bg-white pt-14 md:pt-20">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 70% at 25% 55%, rgba(22,157,178,0.10) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 70% at 25% 55%, rgba(22,157,178,0.08) 0%, transparent 70%)",
         }}
       />
 
-      <div className="relative mx-auto w-full max-w-5xl px-6 py-20 md:px-8">
-        <div className="flex flex-col gap-10 md:flex-row md:items-center md:gap-14">
+      <div className="relative mx-auto w-full max-w-5xl px-5 py-10 md:px-8 md:py-20">
+        <div className="grid gap-6 md:grid-cols-[1fr_360px] md:items-center md:gap-x-14 md:gap-y-6">
+          {/* 左上：だれ向け・見出し */}
+          <div className="flex flex-col gap-4 md:col-start-1 md:row-start-1">
+            <p className="self-start rounded bg-[#e3f4f6] px-2.5 py-1 text-xs font-bold text-[#0e7c8c] md:text-sm">
+              スタッフ3〜20名の店舗オーナーへ
+            </p>
 
-          {/* ── Left: テキスト ── */}
-          <div className="flex flex-col md:flex-1">
-            {/* ラベル（opacity 固定 — LCP ブロック回避） */}
-            <m.div
+            {/* h1 は LCP 要素なので opacity:0 から始めない */}
+            <m.h1
+              className="text-[1.75rem] font-black leading-snug text-[#0F172A] md:text-[2.6rem]"
+              style={{ letterSpacing: "-0.01em", textWrap: "balance" }}
               initial={{ y: 16 }}
               animate={{ y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-6 flex flex-col items-start gap-3"
             >
-              <p className="text-sm font-bold uppercase tracking-widest text-[#169db2]">
-                業務標準化・リーダー育成の伴走支援
-              </p>
-              <div className="h-px w-10 bg-[#169db2]" />
-            </m.div>
-
-            {/* h1 — LCP 要素につき opacity:0 を使わない */}
-            <m.h1
-              className="mb-4 text-3xl font-bold leading-tight text-[#0F172A] md:text-4xl"
-              style={{ letterSpacing: "-0.02em" }}
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              あなたの頭の中にある
-              <span className="text-[#169db2]">"やり方"</span>を、
-              <br />
-              組織が動く仕組みに変える。
+              「自分がいないと回らない」を、<span className="text-[#169db2]">仕組み</span>で卒業する。
             </m.h1>
 
-            <m.p
-              className="mb-3 text-base font-semibold text-[#0F172A] md:text-lg"
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-            >
-              リーダーが現場から解放され、利益が残る現場を構築。
-            </m.p>
-
-            <m.p
-              className="mb-10 text-sm leading-loose text-[#64748B] md:text-base"
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              「自分がいないと回らない」を卒業し、誰でも同じ品質で動ける組織へ。
-              <br className="hidden md:block" />
-              業務標準化とリーダー育成の伴走支援で、あなたの現場を根本から変えます。
-            </m.p>
-
-            <m.div
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              <CTAButton place="hero" />
-              <p className="mt-3 text-xs text-[#64748B]">
-                ※ 無料・完全オンライン・LINE登録だけでOK
-              </p>
-            </m.div>
+            <p className="text-[15px] leading-relaxed text-[#334155] md:text-base">
+              業務の標準化とリーダー育成を、ニトリ15年の元店長が、あなたのお店で一緒に進めます。
+            </p>
           </div>
 
-          {/* ── Right: ダークパネル ── */}
-          <m.div
-            className="w-full md:w-[380px] md:shrink-0"
-            initial={{ x: 30 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-          >
-            <div className="rounded-2xl bg-[#0F172A] p-7 shadow-xl">
-              <p className="mb-5 text-[11px] font-bold uppercase tracking-widest text-[#169db2]">
-                なぜ ミラゲル か
-              </p>
-
-              <div className="mb-7 space-y-4">
-                {TRUST_ITEMS.map((label, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#169db2] text-[10px] font-bold text-white">
-                      {i + 1}
-                    </span>
-                    <p className="text-sm leading-relaxed text-[#CBD5E1]">{label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mb-5 h-px bg-[#1E293B]" />
-
-              <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-[#475569]">
-                こんな変化が起きています
-              </p>
-              <div className="flex items-center gap-2">
-                <div className="flex-1 rounded-xl bg-[#1E293B] px-3 py-3 text-center">
-                  <p className="text-xs leading-relaxed text-[#94A3B8]">自分がいないと不安</p>
-                </div>
-                <span className="shrink-0 text-lg font-bold text-[#169db2]">→</span>
-                <div className="flex-1 rounded-xl border border-[#169db2]/40 bg-[#169db2]/10 px-3 py-3 text-center">
-                  <p className="text-xs font-bold text-[#5BBFCE]">誰でも動ける現場</p>
-                </div>
+          {/* 右（スマホでは見出しの下）：写真と経歴 */}
+          <div className="flex w-full flex-col gap-4 md:col-start-2 md:row-span-2 md:row-start-1">
+            <div className="flex items-center gap-4 rounded-2xl border border-[#e2e8f0] bg-[#F8FAFC] p-4">
+              <Image
+                src="/images/profile.png"
+                alt="片山 真介"
+                width={80}
+                height={80}
+                priority
+                className="h-16 w-16 flex-none rounded-full object-cover md:h-20 md:w-20"
+              />
+              <div className="flex flex-col gap-0.5">
+                <p className="text-base font-bold text-[#0F172A]">片山 真介</p>
+                <p className="text-xs leading-relaxed text-[#334155]">{CAREER_SHORT}</p>
               </div>
             </div>
-          </m.div>
+            <ul className="flex flex-col gap-2 px-1">
+              {POINTS.map((p) => (
+                <li key={p} className="flex items-start gap-2 text-sm text-[#334155]">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-[#169db2]" aria-hidden />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
 
+          {/* 左下（スマホでは写真の下）：LINE ボタン */}
+          <div className="flex flex-col items-stretch gap-2 md:col-start-1 md:row-start-2 md:items-start">
+            <CTAButton place="hero" className="w-full md:w-auto" />
+            <p className="text-center text-xs text-[#64748B] md:text-left">{LINE_NOTE}</p>
+          </div>
         </div>
       </div>
     </section>
