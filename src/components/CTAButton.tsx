@@ -1,15 +1,20 @@
 "use client";
 
 import { m } from "framer-motion";
-import { LINE_URL } from "@/lib/constants";
+import { LINE_URL, COLORS } from "@/lib/constants";
+import { trackLineClick, type LinePlace } from "@/lib/analytics";
 
 interface CTAButtonProps {
+  place: LinePlace;
   label?: string;
+  slug?: string;
   className?: string;
 }
 
 export function CTAButton({
+  place,
   label = "LINEで無料相談する",
+  slug,
   className = "",
 }: CTAButtonProps) {
   return (
@@ -17,10 +22,10 @@ export function CTAButton({
       href={LINE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-lg bg-[#169db2] px-8 py-4 text-base font-bold text-white transition-shadow ${className}`}
-      whileHover={{
-        boxShadow: "0 0 24px 6px rgba(22,157,178,0.35)",
-      }}
+      onClick={() => trackLineClick(place, slug)}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-bold text-white transition-shadow ${className}`}
+      style={{ backgroundColor: COLORS.line }}
+      whileHover={{ boxShadow: "0 0 20px 4px rgba(6,199,85,0.3)" }}
       whileTap={{ scale: 0.97 }}
     >
       {label}

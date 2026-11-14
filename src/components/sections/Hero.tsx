@@ -78,7 +78,7 @@ export function Hero() {
               animate={{ y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <CTAButton />
+              <CTAButton place="hero" />
               <p className="mt-3 text-xs text-[#64748B]">
                 ※ 無料・完全オンライン・LINE登録だけでOK
               </p>

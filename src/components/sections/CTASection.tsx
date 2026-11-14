@@ -52,7 +52,7 @@ export function CTASection() {
         </div>
 
         {/* LINE CTA（メイン） */}
-        <CTAButton />
+        <CTAButton place="cta_section" />
         <p className="mt-2 text-xs text-[#64748B]">
           ※ 無料・完全オンライン・1分で登録完了
         </p>

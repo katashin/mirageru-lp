@@ -3,6 +3,21 @@ export const SITE_URL = "https://lp.mirageru.com";
 export const X_URL = "https://x.com/coach_katayama";
 export const EMAIL_ADDRESS = "shinsuke.katayama@mirageru.com";
 
+export const COLORS = {
+  teal: "#169db2",
+  tealDeep: "#0e7c8c",
+  tealSoft: "#e3f4f6",
+  navy: "#0F172A",
+  bg: "#F8FAFC",
+  line: "#06c755",
+  gridLine: "rgba(22,157,178,.18)",
+  noText: "#6fd6e6",
+} as const;
+
+export const CAREER_SHORT = "ニトリ15年・店長3店舗・最大120名のマネジメント";
+export const BYLINE = "片山 真介（元ニトリ店長・ニトリ15年）";
+export const LINE_NOTE = "50分・オンライン・売り込みはしません";
+
 export const SITE_NAME = "ミラゲル";
 export const REPRESENTATIVE_NAME = "片山 真介";
 
