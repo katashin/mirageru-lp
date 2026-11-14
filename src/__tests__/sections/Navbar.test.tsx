@@ -51,13 +51,10 @@ describe("タブに合わせて変わるボタン", () => {
     screen.getAllByRole("link").forEach((a) => expect(a).not.toHaveAttribute("href", LINE_URL));
   });
 
-  it("フッターには LINE のリンクを置かない（会社向けか個人向けか分かりにくいため）", () => {
+  it("フッターはロゴと著作権の表示だけ（リンクは置かない）", () => {
     render(<Footer />);
-    expect(screen.queryByRole("link", { name: /LINE/ })).toBeNull();
-  });
-
-  it("フッターから個人向けのタブへ行ける", () => {
-    render(<Footer />);
-    expect(screen.getByRole("link", { name: /管理職・個人の方/ })).toHaveAttribute("href", "/#katariai");
+    expect(screen.queryAllByRole("link")).toHaveLength(0);
+    expect(screen.getByAltText("ミラゲル")).toBeInTheDocument();
+    expect(screen.getByText(/© \d{4} ミラゲル\. All rights reserved\./)).toBeInTheDocument();
   });
 });

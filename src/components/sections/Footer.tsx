@@ -14,14 +14,6 @@ export function Footer() {
           height={62}
           className="h-8 w-auto"
         />
-        {/* 同じページでも hashchange を起こしてタブを切り替えるため、Link ではなく a を使う */}
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a
-          href="/#katariai"
-          className="text-sm text-[#64748B] underline-offset-2 transition-colors hover:text-[#9C7A3C] hover:underline"
-        >
-          管理職・個人の方（カタリアイ）
-        </a>
         <p className="text-xs text-[#94A3B8]">
           © {year} {SITE_NAME}. All rights reserved.
         </p>
