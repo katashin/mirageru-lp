@@ -6,7 +6,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[#E2E8F0] bg-white py-8">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 md:flex-row md:px-8">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-6 text-center md:px-8">
         <Image
           src="/images/logo-light.png"
           alt={SITE_NAME}
