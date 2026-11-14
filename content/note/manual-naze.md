@@ -27,7 +27,7 @@ xPosts:
   - https://x.com/coach_katayama/status/2061764784492875973
   - https://x.com/coach_katayama/status/2061764782081105968
   - https://x.com/coach_katayama/status/2061764783284879742
-draft: true
+draft: false
 ---
 
 休みの日をまるごと使って、マニュアルを作ったことがあります。
