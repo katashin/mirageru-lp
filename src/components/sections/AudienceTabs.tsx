@@ -18,6 +18,8 @@ export function AudienceTabs({ business, katariai }: { business: ReactNode; kata
 
   return (
     <>
+      {/* /#katariai で来たとき、ブラウザがタブの位置まで動くための目印 */}
+      <div id="katariai" aria-hidden className="scroll-mt-[56px] md:scroll-mt-[68px]" />
       <div
         id={AUDIENCE_TABS_ID}
         className="sticky top-[56px] z-40 scroll-mt-[56px] border-b border-[#E2E8F0] bg-white md:top-[68px] md:scroll-mt-[68px]"

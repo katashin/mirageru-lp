@@ -26,8 +26,8 @@ export function AudienceGate() {
   return (
     <section className="bg-white pt-[72px] md:pt-[92px]">
       <div className="mx-auto max-w-5xl px-5 pb-6 pt-4 md:px-8 md:pb-8">
-        <div className="md:flex md:items-end md:justify-between md:gap-10">
-          <div className="mb-4 md:mb-0">
+        <div className="lg:flex lg:items-end lg:justify-between lg:gap-10">
+          <div className="mb-4 lg:mb-0">
             <p className="text-xs font-bold text-[#0e7c8c] md:text-sm">ミラゲル ― 未来につなげる</p>
             <p
               className="mt-1 text-lg font-bold leading-snug text-[#0F172A] md:text-2xl"
@@ -36,7 +36,7 @@ export function AudienceGate() {
               現場のリーダーが、一人で抱えなくていい仕組みと相手を。
             </p>
           </div>
-          <div className="grid gap-2.5 sm:grid-cols-2 md:w-[560px] md:shrink-0">
+          <div className="grid gap-2.5 sm:grid-cols-2 lg:w-[560px] lg:shrink-0">
             {DOORS.map((d) => (
               <button
                 key={d.id}

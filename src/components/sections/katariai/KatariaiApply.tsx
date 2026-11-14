@@ -69,7 +69,7 @@ export function KatariaiApply() {
             href={KATARIAI_LINE_URL}
             label={KATARIAI_APPLY_LABEL}
             tone="light"
-            className="w-full rounded-md md:w-auto"
+            className="w-full whitespace-nowrap rounded-md px-5 md:w-auto md:px-8"
           />
           <p className="mt-5 text-[13px] text-[#C3C9D6]">
             公式LINEでは「{KATARIAI_GIFT}」も無料でプレゼント中。受け取るだけでも大歓迎です。

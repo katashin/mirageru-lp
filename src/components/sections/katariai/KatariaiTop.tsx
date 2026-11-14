@@ -26,7 +26,7 @@ export function KatariaiTop() {
             href={KATARIAI_LINE_URL}
             label={KATARIAI_APPLY_LABEL}
             tone="navy"
-            className="w-full rounded-md md:w-auto"
+            className="w-full whitespace-nowrap rounded-md px-5 md:w-auto md:px-8"
           />
           <p className="mt-3 text-[13px] text-[#5E6678]">
             LINEで申し込み。売り込みはしません。合わなければ、そこで終わりで大丈夫です。
