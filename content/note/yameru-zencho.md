@@ -30,7 +30,7 @@ xPosts:
   - https://x.com/coach_katayama/status/2080775531495092414
   - https://x.com/coach_katayama/status/2113949372878585907
   - https://x.com/coach_katayama/status/2119626530691145841
-draft: true
+draft: false
 ---
 
 「店長、ちょっといいですか。今月いっぱいで辞めたいんです」
