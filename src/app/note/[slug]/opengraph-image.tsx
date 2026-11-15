@@ -14,7 +14,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const note = getNote(slug, { includeDrafts: showDrafts() });
   return renderOgCard({
     label: note ? `現場ノート No.${String(note.no).padStart(2, "0")} ・ ${note.theme}` : "現場ノート",
-    title: note?.title ?? "現場ノート",
+    title: note?.ogTitle ?? note?.title ?? "現場ノート",
     subtitle: note?.subtitle ?? "",
   });
 }

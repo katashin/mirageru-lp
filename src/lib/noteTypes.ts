@@ -20,6 +20,8 @@ export type Note = {
   endCta: string;
   sources: NoteSource[];
   xPosts: string[];
+  /** SNS 用の画像の題名。「\n」の所で改行する（無ければ title を使う） */
+  ogTitle?: string;
   draft: boolean;
   body: string;
 };

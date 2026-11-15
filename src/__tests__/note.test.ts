@@ -23,6 +23,11 @@ describe("記事の読み込み", () => {
     expect(n.body).toContain("## 手順1 聞く");
   });
 
+  it("画像用の題名 ogTitle は、改行つきで読む。無ければ undefined", () => {
+    expect(getNote("shinjin-shonichi", { dir })!.ogTitle).toBe("新人が2日目に来なくなるお店の、\n初日の迎え方");
+    expect(getNote("manual-koushin", { dir })!.ogTitle).toBeUndefined();
+  });
+
   it("下書きは includeDrafts なしでは見つからない", () => {
     expect(getNote("shitagaki", { dir, includeDrafts: false })).toBeNull();
     expect(getNote("shitagaki", { dir, includeDrafts: true })?.draft).toBe(true);

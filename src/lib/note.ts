@@ -62,6 +62,7 @@ function readNote(dir: string, file: string): Note {
       ? data.sources.map((s: NoteSource) => ({ label: String(s.label), url: String(s.url) }))
       : [],
     xPosts: strList(data.xPosts),
+    ogTitle: data.ogTitle ? String(data.ogTitle) : undefined,
     draft: data.draft === true,
     body: content.trim(),
   };
