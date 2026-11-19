@@ -28,7 +28,7 @@ xPosts:
   - https://x.com/coach_katayama/status/2090905583507689520
   - https://x.com/coach_katayama/status/2094018794653966433
   - https://x.com/coach_katayama/status/2089457255142019423
-draft: true
+draft: false
 ---
 
 「この棚を整理しておいてください」
